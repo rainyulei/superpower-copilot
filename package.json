@@ -2,7 +2,7 @@
   "name": "superpower-copilot",
   "displayName": "Superpower Copilot",
   "description": "Structured development workflows for GitHub Copilot Chat",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "publisher": "rainlei",
   "license": "MIT",
   "engines": {
