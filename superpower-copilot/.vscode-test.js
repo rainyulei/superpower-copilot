@@ -8,5 +8,6 @@ module.exports = defineConfig({
       ui: 'tdd',
       timeout: 20000
     }
-  }]
+  }],
+  userDataDir: '/tmp/vsc-test'
 });
