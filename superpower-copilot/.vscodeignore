@@ -5,5 +5,14 @@ out/**
 node_modules/**
 .gitignore
 tsconfig.json
+tsconfig.test.json
 esbuild.js
+eslint.config.mjs
+.mocharc.json
+.vscode-test.js
 **/*.map
+test_*.js
+test_*.log
+verify_tests.js
+IMPLEMENTATION_VERIFICATION.md
+V0.4.0_*.md
