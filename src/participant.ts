@@ -111,7 +111,14 @@ export class SuperpowerParticipant {
       }
     }
 
-    return result;
+    // 9. Return result with skillId in metadata for followup provider
+    return {
+      ...result,
+      metadata: {
+        ...result.metadata,
+        skillId: skill.id,
+      },
+    };
   };
 
   private restoreSession(_chatContext: vscode.ChatContext): SessionStateImpl {
