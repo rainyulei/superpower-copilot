@@ -15,6 +15,7 @@ import { debuggingSkill } from './skills/debugging';
 import { codeReviewRequestSkill } from './skills/code-review-request';
 import { codeReviewReceiveSkill } from './skills/code-review-receive';
 import { getWelcomeMessage, getHelpMessage } from './welcome';
+import { formatUserError, ErrorCategory } from './errors';
 
 export class SuperpowerParticipant {
   private registry: SkillRegistry;
@@ -93,8 +94,16 @@ export class SuperpowerParticipant {
     try {
       result = await skill.handle(ctx);
     } catch (err) {
-      stream.markdown(`\n\n⚠️ Error in ${skill.name}: ${err instanceof Error ? err.message : String(err)}`);
-      return { metadata: { error: true } };
+      const formatted = formatUserError(err);
+
+      // For cancelled operations, just return early silently
+      if (formatted.category === ErrorCategory.Cancelled) {
+        return { metadata: { error: true, cancelled: true } };
+      }
+
+      // For all other errors, show user-friendly message
+      stream.markdown(`\n\n${formatted.userMessage}`);
+      return { metadata: { error: true, category: formatted.category } };
     }
 
     // 7. Persist session
