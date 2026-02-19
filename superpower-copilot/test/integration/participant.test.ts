@@ -30,12 +30,12 @@ suite('Superpower Copilot Integration', () => {
     assert.ok(ext!.isActive);
   });
 
-  test('All 7 slash commands should be available', () => {
+  test('All 9 slash commands should be available', () => {
     // This verifies package.json has all commands registered
     const ext = vscode.extensions.getExtension('rainlei.superpower-copilot');
     const commands = ext!.packageJSON.contributes.chatParticipants[0].commands;
     const commandNames = commands.map((c: any) => c.name);
-    assert.strictEqual(commandNames.length, 7);
+    assert.strictEqual(commandNames.length, 9);
     assert.ok(commandNames.includes('brainstorm'));
     assert.ok(commandNames.includes('plan'));
     assert.ok(commandNames.includes('execute'));
@@ -43,5 +43,7 @@ suite('Superpower Copilot Integration', () => {
     assert.ok(commandNames.includes('finish'));
     assert.ok(commandNames.includes('tdd'));
     assert.ok(commandNames.includes('debug'));
+    assert.ok(commandNames.includes('review'));
+    assert.ok(commandNames.includes('respond'));
   });
 });
