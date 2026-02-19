@@ -10,6 +10,7 @@ import { writingPlansSkill } from './skills/writing-plans';
 import { executingPlansSkill } from './skills/executing-plans';
 import { verificationSkill } from './skills/verification';
 import { finishBranchSkill } from './skills/finish-branch';
+import { tddSkill } from './skills/tdd';
 
 export class SuperpowerParticipant {
   private registry: SkillRegistry;
@@ -26,6 +27,7 @@ export class SuperpowerParticipant {
     this.registry.register(executingPlansSkill);
     this.registry.register(verificationSkill);
     this.registry.register(finishBranchSkill);
+    this.registry.register(tddSkill);
   }
 
   handler: vscode.ChatRequestHandler = async (
