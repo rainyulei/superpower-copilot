@@ -14,6 +14,7 @@ import { tddSkill } from './skills/tdd';
 import { debuggingSkill } from './skills/debugging';
 import { codeReviewRequestSkill } from './skills/code-review-request';
 import { codeReviewReceiveSkill } from './skills/code-review-receive';
+import { getWelcomeMessage, getHelpMessage } from './welcome';
 
 export class SuperpowerParticipant {
   private registry: SkillRegistry;
@@ -42,7 +43,19 @@ export class SuperpowerParticipant {
     // 1. Restore session
     const session = this.restoreSession(chatContext);
 
-    // 2. Determine skill
+    // 2. Handle help command
+    if (request.command === 'help') {
+      stream.markdown(getHelpMessage());
+      return {};
+    }
+
+    // 3. Handle empty first message
+    if (!request.command && !request.prompt.trim()) {
+      stream.markdown(getWelcomeMessage());
+      return {};
+    }
+
+    // 4. Determine skill
     let skill: Skill;
 
     if (request.command) {
@@ -64,11 +77,11 @@ export class SuperpowerParticipant {
       }
     }
 
-    // 3. Activate session
+    // 5. Activate session
     session.activate(skill.id);
     session.set('activeSkillId', skill.id);
 
-    // 4. Execute skill
+    // 6. Execute skill
     const ctx: SkillContext = {
       request, chatContext, stream, token,
       model: request.model,
@@ -84,13 +97,13 @@ export class SuperpowerParticipant {
       return { metadata: { error: true } };
     }
 
-    // 5. Persist session
+    // 7. Persist session
     this.context.workspaceState.update(
       'superpower.session',
       session.serialize()
     );
 
-    // 6. Handle skill chaining
+    // 8. Handle skill chaining
     if (result.nextSkill && result.metadata) {
       const nextSkill = this.registry.get(result.nextSkill);
       if (nextSkill) {

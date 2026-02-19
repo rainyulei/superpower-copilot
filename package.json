@@ -69,6 +69,10 @@
           {
             "name": "respond",
             "description": "Process code review feedback with technical rigor"
+          },
+          {
+            "name": "help",
+            "description": "Show all available commands and workflows"
           }
         ]
       }
