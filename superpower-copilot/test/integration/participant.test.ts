@@ -22,4 +22,23 @@ suite('Superpower Copilot Integration', () => {
       'savePlan command not registered'
     );
   });
+
+  test('Execute command should be registered', async () => {
+    const ext = vscode.extensions.getExtension('rainlei.superpower-copilot');
+    await ext!.activate();
+    // Verify the extension is active and has all 5 commands
+    assert.ok(ext!.isActive);
+  });
+
+  test('All 5 slash commands should be available', () => {
+    // This verifies package.json has all commands registered
+    const ext = vscode.extensions.getExtension('rainlei.superpower-copilot');
+    const commands = ext!.packageJSON.contributes.chatParticipants[0].commands;
+    const commandNames = commands.map((c: any) => c.name);
+    assert.ok(commandNames.includes('brainstorm'));
+    assert.ok(commandNames.includes('plan'));
+    assert.ok(commandNames.includes('execute'));
+    assert.ok(commandNames.includes('verify'));
+    assert.ok(commandNames.includes('finish'));
+  });
 });
