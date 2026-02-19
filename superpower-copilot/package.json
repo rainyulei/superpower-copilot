@@ -2,7 +2,7 @@
   "name": "superpower-copilot",
   "displayName": "Superpower Copilot",
   "description": "Structured development workflows for GitHub Copilot Chat",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "rainlei",
   "license": "MIT",
   "engines": {
@@ -41,6 +41,18 @@
           {
             "name": "plan",
             "description": "Create a step-by-step implementation plan"
+          },
+          {
+            "name": "execute",
+            "description": "Execute an implementation plan step by step"
+          },
+          {
+            "name": "verify",
+            "description": "Verify work before claiming completion"
+          },
+          {
+            "name": "finish",
+            "description": "Finish development branch (merge, PR, or discard)"
           }
         ]
       }
