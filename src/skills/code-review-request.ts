@@ -129,7 +129,7 @@ export const codeReviewRequestSkill: Skill & { detectPhase: (response: string, c
           recentCommits: log,
           currentBranch: branch,
         });
-      } catch (error) {
+      } catch {
         session.set('reviewContext', {
           diff: '',
           diffStaged: '',
