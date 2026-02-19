@@ -1,6 +1,6 @@
 // test/unit/verification.test.ts
 import * as assert from 'assert';
-import { verificationSkill } from '../../out/skills/verification.js';
+import { verificationSkill } from '../../src/skills/verification';
 
 suite('VerificationSkill', () => {
   test('should have correct id', () => {

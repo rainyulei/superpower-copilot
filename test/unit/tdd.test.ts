@@ -1,6 +1,6 @@
 // test/unit/tdd.test.ts
 import * as assert from 'assert';
-import { tddSkill } from '../../out/skills/tdd.js';
+import { tddSkill } from '../../src/skills/tdd';
 
 suite('TddSkill', () => {
   test('should have correct id', () => {

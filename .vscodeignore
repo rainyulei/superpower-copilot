@@ -16,3 +16,5 @@ test_*.log
 verify_tests.js
 IMPLEMENTATION_VERIFICATION.md
 V0.4.0_*.md
+V1.0.0_*.md
+.github/**

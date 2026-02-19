@@ -1,6 +1,6 @@
 // test/unit/code-review-request.test.ts
 import * as assert from 'assert';
-import { codeReviewRequestSkill } from '../../out/skills/code-review-request.js';
+import { codeReviewRequestSkill } from '../../src/skills/code-review-request';
 
 suite('CodeReviewRequestSkill', () => {
   test('should have correct id', () => {
