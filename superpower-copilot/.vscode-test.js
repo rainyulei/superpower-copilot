@@ -9,5 +9,5 @@ module.exports = defineConfig({
       timeout: 20000
     }
   }],
-  userDataDir: '/tmp/vsc-test'
+  userDataDir: '/tmp/vsc'
 });
