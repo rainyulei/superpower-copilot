@@ -1,6 +1,6 @@
 // test/unit/executing-plans.test.ts
 import * as assert from 'assert';
-import { executingPlansSkill } from '../../out/skills/executing-plans.js';
+import { executingPlansSkill } from '../../src/skills/executing-plans';
 
 suite('ExecutingPlansSkill', () => {
   test('should have correct id', () => {

@@ -5,6 +5,10 @@
   "version": "1.0.0",
   "publisher": "rainlei",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rainlei/superpower-copilot"
+  },
   "engines": {
     "vscode": "^1.96.0"
   },

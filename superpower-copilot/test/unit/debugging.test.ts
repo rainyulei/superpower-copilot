@@ -1,6 +1,6 @@
 // test/unit/debugging.test.ts
 import * as assert from 'assert';
-import { debuggingSkill } from '../../out/skills/debugging.js';
+import { debuggingSkill } from '../../src/skills/debugging';
 
 suite('DebuggingSkill', () => {
   test('should have correct id', () => {

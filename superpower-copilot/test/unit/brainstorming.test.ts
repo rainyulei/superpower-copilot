@@ -1,6 +1,6 @@
 // test/unit/brainstorming.test.ts
 import * as assert from 'assert';
-import { brainstormingSkill } from '../../out/skills/brainstorming.js';
+import { brainstormingSkill } from '../../src/skills/brainstorming';
 
 suite('BrainstormingSkill', () => {
   test('should have correct id', () => {

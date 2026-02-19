@@ -1,6 +1,6 @@
 // test/unit/finish-branch.test.ts
 import * as assert from 'assert';
-import { finishBranchSkill } from '../../out/skills/finish-branch.js';
+import { finishBranchSkill } from '../../src/skills/finish-branch';
 
 suite('FinishBranchSkill', () => {
   test('should have correct id', () => {

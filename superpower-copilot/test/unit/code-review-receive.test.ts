@@ -1,6 +1,6 @@
 // test/unit/code-review-receive.test.ts
 import * as assert from 'assert';
-import { codeReviewReceiveSkill } from '../../out/skills/code-review-receive.js';
+import { codeReviewReceiveSkill } from '../../src/skills/code-review-receive';
 
 suite('CodeReviewReceiveSkill', () => {
   test('should have correct id', () => {
@@ -56,10 +56,19 @@ suite('CodeReviewReceiveSkill', () => {
   });
 
   test('should include verify-before-implement guidance in system prompt', () => {
-    assert.ok(codeReviewReceiveSkill.systemPrompt.includes('verify against codebase') ||
-              codeReviewReceiveSkill.systemPrompt.includes('checking.*against.*codebase'));
-    assert.ok(codeReviewReceiveSkill.systemPrompt.includes('one item at a time') ||
-              codeReviewReceiveSkill.systemPrompt.includes('one.*at.*a.*time'));
+    // The source uses "Checking against codebase:" in the CORRECT Response Patterns section
+    // and "Verify each suggestion against the codebase" in the EVALUATE phase.
+    assert.ok(
+      codeReviewReceiveSkill.systemPrompt.includes('Checking against codebase') ||
+      codeReviewReceiveSkill.systemPrompt.includes('Verify each suggestion against the codebase'),
+      'System prompt should mention verifying against the codebase'
+    );
+    // The source uses "One item at a time." (capital O) in the IMPLEMENT phase.
+    assert.ok(
+      codeReviewReceiveSkill.systemPrompt.includes('One item at a time') ||
+      codeReviewReceiveSkill.systemPrompt.includes('one at a time'),
+      'System prompt should mention processing one item at a time'
+    );
   });
 
   test('should include pushback guidance in system prompt', () => {
@@ -69,7 +78,12 @@ suite('CodeReviewReceiveSkill', () => {
   });
 
   test('should include one-at-a-time implementation strategy in system prompt', () => {
-    assert.ok(codeReviewReceiveSkill.systemPrompt.includes('one item at a time') ||
-              codeReviewReceiveSkill.systemPrompt.includes('one.*at.*a.*time'));
+    // The source uses "One item at a time." (capital O) in the IMPLEMENT phase
+    // and "Address items one at a time:" earlier in that section.
+    assert.ok(
+      codeReviewReceiveSkill.systemPrompt.includes('One item at a time') ||
+      codeReviewReceiveSkill.systemPrompt.includes('one at a time'),
+      'System prompt should specify one-at-a-time implementation strategy'
+    );
   });
 });

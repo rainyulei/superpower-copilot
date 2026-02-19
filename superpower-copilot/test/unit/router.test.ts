@@ -1,7 +1,7 @@
 // test/unit/router.test.ts
 import * as assert from 'assert';
-import { SkillRouter } from '../../out/router.js';
-import { SkillRegistry } from '../../out/skills/registry.js';
+import { SkillRouter } from '../../src/router';
+import { SkillRegistry } from '../../src/skills/registry';
 
 function createMockSkill(id: string, keywords: string[]) {
   return {
