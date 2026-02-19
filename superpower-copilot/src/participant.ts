@@ -7,6 +7,9 @@ import { SessionStateImpl } from './state/session';
 import { createToolKit } from './tools/index';
 import { brainstormingSkill } from './skills/brainstorming';
 import { writingPlansSkill } from './skills/writing-plans';
+import { executingPlansSkill } from './skills/executing-plans';
+import { verificationSkill } from './skills/verification';
+import { finishBranchSkill } from './skills/finish-branch';
 
 export class SuperpowerParticipant {
   private registry: SkillRegistry;
@@ -20,6 +23,9 @@ export class SuperpowerParticipant {
     // Register skills
     this.registry.register(brainstormingSkill);
     this.registry.register(writingPlansSkill);
+    this.registry.register(executingPlansSkill);
+    this.registry.register(verificationSkill);
+    this.registry.register(finishBranchSkill);
   }
 
   handler: vscode.ChatRequestHandler = async (
