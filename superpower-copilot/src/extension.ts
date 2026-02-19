@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { SuperpowerParticipant } from './participant';
+import { getFollowUps } from './followups';
 
 export function activate(context: vscode.ExtensionContext) {
   const superpower = new SuperpowerParticipant(context);
@@ -14,27 +15,20 @@ export function activate(context: vscode.ExtensionContext) {
   // Follow-up provider
   participant.followupProvider = {
     provideFollowups(result: vscode.ChatResult) {
-      const followups: vscode.ChatFollowup[] = [];
-      const nextSkill = (result as Record<string, unknown>)?.nextSkill as string | undefined;
+      const metadata = (result as Record<string, unknown>)?.metadata as Record<string, unknown> | undefined;
+      const skillId = metadata?.skillId as string | undefined;
 
-      const labels: Record<string, string> = {
-        plan: '📝 Create Implementation Plan',
-        execute: '▶️ Start Execution',
-        verify: '✅ Verify Before Completion',
-        finish: '🚀 Finish Branch',
-        review: '🔍 Request Code Review',
-        respond: '💬 Respond to Review',
-      };
-
-      if (nextSkill && labels[nextSkill]) {
-        followups.push({
-          label: labels[nextSkill],
-          command: nextSkill,
-          prompt: '',
-        });
+      if (!skillId) {
+        return [];
       }
 
-      return followups;
+      const followupActions = getFollowUps(skillId);
+
+      return followupActions.map(action => ({
+        label: action.label,
+        command: action.command,
+        prompt: action.message,
+      }));
     },
   };
 
