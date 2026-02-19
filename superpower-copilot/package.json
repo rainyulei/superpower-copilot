@@ -8,8 +8,18 @@
   "engines": {
     "vscode": "^1.96.0"
   },
-  "categories": ["AI", "Chat"],
-  "keywords": ["copilot", "agent", "tdd", "code-review", "debugging", "workflow"],
+  "categories": [
+    "AI",
+    "Chat"
+  ],
+  "keywords": [
+    "copilot",
+    "agent",
+    "tdd",
+    "code-review",
+    "debugging",
+    "workflow"
+  ],
   "main": "./dist/extension.js",
   "activationEvents": [],
   "extensionDependencies": [
@@ -24,8 +34,14 @@
         "description": "Structured dev workflows: brainstorm, plan, TDD, debug, review",
         "isSticky": true,
         "commands": [
-          { "name": "brainstorm", "description": "Explore ideas and design before implementation" },
-          { "name": "plan", "description": "Create a step-by-step implementation plan" }
+          {
+            "name": "brainstorm",
+            "description": "Explore ideas and design before implementation"
+          },
+          {
+            "name": "plan",
+            "description": "Create a step-by-step implementation plan"
+          }
         ]
       }
     ],
@@ -49,14 +65,17 @@
     "publish": "vsce publish"
   },
   "devDependencies": {
-    "@types/vscode": "^1.96.0",
     "@types/mocha": "^10.0.9",
     "@types/node": "^22.0.0",
+    "@types/vscode": "^1.96.0",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1",
     "@vscode/vsce": "^3.0.0",
     "esbuild": "^0.24.0",
     "eslint": "^9.0.0",
+    "mocha": "^11.7.5",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
     "typescript": "^5.7.0"
   }
 }
