@@ -69,6 +69,10 @@
           {
             "name": "respond",
             "description": "Process code review feedback with technical rigor"
+          },
+          {
+            "name": "help",
+            "description": "Show all available commands and workflows"
           }
         ]
       }
@@ -93,6 +97,7 @@
     "publish": "vsce publish"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "@types/mocha": "^10.0.9",
     "@types/node": "^22.0.0",
     "@types/vscode": "^1.96.0",
@@ -104,6 +109,7 @@
     "mocha": "^11.7.5",
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.56.0"
   }
 }
