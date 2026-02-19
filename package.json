@@ -2,7 +2,7 @@
   "name": "superpower-copilot",
   "displayName": "Superpower Copilot",
   "description": "Structured development workflows for GitHub Copilot Chat",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "rainlei",
   "license": "MIT",
   "engines": {
@@ -53,6 +53,14 @@
           {
             "name": "finish",
             "description": "Finish development branch (merge, PR, or discard)"
+          },
+          {
+            "name": "tdd",
+            "description": "Test-driven development: red-green-refactor cycle"
+          },
+          {
+            "name": "debug",
+            "description": "Systematic debugging: find root cause before fixing"
           }
         ]
       }
