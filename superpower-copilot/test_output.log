@@ -1,0 +1,32 @@
+
+> superpower-copilot@0.3.0 test
+> vscode-test
+
+- Resolving version...
+✔ Validated version: 1.109.4
+✔ Found existing install in /Users/rainlei/holiday/powerfull_copolit-legion/master/worker-1/superpower-copilot/.vscode-test/vscode-darwin-arm64-1.109.4
+node:events:485
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: spawn /Users/rainlei/holiday/powerfull_copolit-legion/master/worker-1/superpower-copilot/.vscode-test/vscode-darwin-arm64-1.109.4/Visual Studio Code.app/Contents/Resources/app/bin/code ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:286:19)
+    at onErrorNT (node:internal/child_process:484:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Emitted 'error' event on ChildProcess instance at:
+    at ChildProcess._handle.onexit (node:internal/child_process:292:12)
+    at onErrorNT (node:internal/child_process:484:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'spawn /Users/rainlei/holiday/powerfull_copolit-legion/master/worker-1/superpower-copilot/.vscode-test/vscode-darwin-arm64-1.109.4/Visual Studio Code.app/Contents/Resources/app/bin/code',
+  path: '/Users/rainlei/holiday/powerfull_copolit-legion/master/worker-1/superpower-copilot/.vscode-test/vscode-darwin-arm64-1.109.4/Visual Studio Code.app/Contents/Resources/app/bin/code',
+  spawnargs: [
+    '--extensions-dir=/Users/rainlei/holiday/powerfull_copolit-legion/master/worker-1/superpower-copilot/.vscode-test/extensions',
+    '--user-data-dir=/Users/rainlei/holiday/powerfull_copolit-legion/master/worker-1/superpower-copilot/.vscode-test/user-data',
+    '--install-extension',
+    'github.copilot-chat'
+  ]
+}
+
+Node.js v23.11.0
