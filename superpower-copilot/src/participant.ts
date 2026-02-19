@@ -101,7 +101,7 @@ export class SuperpowerParticipant {
     return result;
   };
 
-  private restoreSession(chatContext: vscode.ChatContext): SessionStateImpl {
+  private restoreSession(_chatContext: vscode.ChatContext): SessionStateImpl {
     // Try to restore from workspaceState
     const persisted = this.context.workspaceState.get<Record<string, unknown>>('superpower.session');
     if (persisted) {

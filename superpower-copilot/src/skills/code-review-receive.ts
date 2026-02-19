@@ -146,7 +146,7 @@ export const codeReviewReceiveSkill: Skill & { detectPhase: (response: string, c
           tools.git.status(),
         ]);
         session.set('codebaseContext', { summary, status });
-      } catch (error) {
+      } catch {
         session.set('codebaseContext', {});
       }
       session.set('codebaseContextGathered', true);
