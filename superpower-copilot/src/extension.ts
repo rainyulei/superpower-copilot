@@ -23,6 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
         verify: '✅ Verify Before Completion',
         finish: '🚀 Finish Branch',
         review: '🔍 Request Code Review',
+        respond: '💬 Respond to Review',
       };
 
       if (nextSkill && labels[nextSkill]) {
