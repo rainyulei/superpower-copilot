@@ -21,8 +21,7 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "package": "vsce package",
-    "publish": "vsce publish",
-    "vscode:uninstall": "node ./dist/uninstall.js"
+    "publish": "vsce publish"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
