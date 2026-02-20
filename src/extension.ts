@@ -6,50 +6,69 @@ const AGENTS_DIR = 'agents';
 const SETTING_KEY = 'chat.agentFilesLocations';
 const GLOBAL_AGENTS_DIR = '~/.superpower-copilot/agents';
 
+function getTargetDir(): string {
+  const homeDir = process.env['HOME'] || process.env['USERPROFILE'] || '';
+  return path.join(homeDir, '.superpower-copilot', 'agents');
+}
+
 export function activate(context: vscode.ExtensionContext) {
   const sourceDir = path.join(context.extensionPath, AGENTS_DIR);
-  const homeDir = process.env['HOME'] || '';
-  const targetDir = path.join(homeDir, '.superpower-copilot', 'agents');
+  const targetDir = getTargetDir();
 
-  // Copy agent files to ~/.superpower-copilot/agents/
-  fs.mkdirSync(targetDir, { recursive: true });
-  const agentFiles = fs.readdirSync(sourceDir).filter(f => f.endsWith('.agent.md'));
-  for (const file of agentFiles) {
-    fs.copyFileSync(path.join(sourceDir, file), path.join(targetDir, file));
-  }
-
-  // Register ~/... path in chat.agentFilesLocations (~ prefix = global/user level)
-  registerAgentsPath(GLOBAL_AGENTS_DIR);
-
-  vscode.window.showInformationMessage(
-    `Superpower Copilot: ${agentFiles.length} agents registered.`
-  );
-
-  context.subscriptions.push({
-    dispose() {
-      // Cleanup agent files
-      for (const file of agentFiles) {
-        try { fs.unlinkSync(path.join(targetDir, file)); } catch {}
+  try {
+    // 1. Clean target directory — remove ALL old .agent.md files first
+    if (fs.existsSync(targetDir)) {
+      for (const file of fs.readdirSync(targetDir)) {
+        if (file.endsWith('.agent.md')) {
+          try { fs.unlinkSync(path.join(targetDir, file)); } catch {}
+        }
       }
-      unregisterAgentsPath(GLOBAL_AGENTS_DIR);
     }
-  });
-}
 
-function registerAgentsPath(agentsPath: string): void {
-  const config = vscode.workspace.getConfiguration();
-  const current = config.get<Record<string, boolean>>(SETTING_KEY) || {};
-  if (!current[agentsPath]) {
-    config.update(SETTING_KEY, { ...current, [agentsPath]: true }, vscode.ConfigurationTarget.Global);
+    // 2. Create directory and copy fresh agent files
+    fs.mkdirSync(targetDir, { recursive: true });
+    const agentFiles = fs.readdirSync(sourceDir).filter(f => f.endsWith('.agent.md'));
+    for (const file of agentFiles) {
+      fs.copyFileSync(path.join(sourceDir, file), path.join(targetDir, file));
+    }
+
+    // 3. Force-register the path in settings (always write, don't skip)
+    forceRegisterAgentsPath();
+
+    vscode.window.showInformationMessage(
+      `Superpower Copilot: ${agentFiles.length} agents activated.`
+    );
+  } catch (err) {
+    vscode.window.showErrorMessage(
+      `Superpower Copilot: Failed to register agents — ${err}`
+    );
   }
 }
 
-function unregisterAgentsPath(agentsPath: string): void {
+async function forceRegisterAgentsPath(): Promise<void> {
   const config = vscode.workspace.getConfiguration();
   const current = config.get<Record<string, boolean>>(SETTING_KEY) || {};
-  const updated = { ...current };
-  delete updated[agentsPath];
-  config.update(SETTING_KEY, updated, vscode.ConfigurationTarget.Global);
+  // Always set — even if key exists, force it to true
+  await config.update(
+    SETTING_KEY,
+    { ...current, [GLOBAL_AGENTS_DIR]: true },
+    vscode.ConfigurationTarget.Global
+  );
 }
 
-export function deactivate() {}
+export function deactivate() {
+  // Best-effort cleanup on deactivation
+  try {
+    const targetDir = getTargetDir();
+    if (fs.existsSync(targetDir)) {
+      for (const file of fs.readdirSync(targetDir)) {
+        if (file.endsWith('.agent.md')) {
+          try { fs.unlinkSync(path.join(targetDir, file)); } catch {}
+        }
+      }
+      // Remove directory if empty
+      try { fs.rmdirSync(targetDir); } catch {}
+      try { fs.rmdirSync(path.dirname(targetDir)); } catch {}
+    }
+  } catch {}
+}

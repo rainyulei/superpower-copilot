@@ -10,9 +10,3 @@ docs/**
 .github/**
 eslint.config.mjs
 .vscode-test.js
-.claude/**
-.legion/**
-superpower-copilot/**
-CLAUDE.md
-package-lock.json
-*.vsix
