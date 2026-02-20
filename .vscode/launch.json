@@ -5,9 +5,9 @@
       "name": "Run Extension",
       "type": "extensionHost",
       "request": "launch",
-      "args": ["--extensionDevelopmentPath=${workspaceFolder}/superpower-copilot"],
-      "outFiles": ["${workspaceFolder}/superpower-copilot/dist/**/*.js"],
-      "preLaunchTask": "${defaultBuildTask}"
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "preLaunchTask": "build"
     }
   ]
 }
