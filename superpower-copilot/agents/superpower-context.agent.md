@@ -4,7 +4,7 @@ description: >
   Map dependencies and impact before multi-file changes. Identifies affected files,
   traces ripple effects, finds patterns, and sequences changes safely.
   Keywords: context, dependency, impact, refactor, multi-file, change, architecture, map
-tools: ['search', 'read', 'execute']
+tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'runInTerminal', 'terminalLastCommand', 'getTerminalOutput']
 handoffs:
   - label: Create Implementation Plan
     agent: superpower-plan
@@ -46,7 +46,8 @@ Multi-file changes without dependency mapping cause cascading failures. "I'll ju
 5. **Discover patterns** — how similar changes were done before
 6. **Sequence changes** — optimal order to avoid breaking intermediate states
 7. **Present context map** — structured summary for user approval
-8. **Hand off** — to superpower-plan with the approved context map
+8. **Save context map** — to `.github/superpower/context/YYYY-MM-DD-<topic>-context-map.md`
+9. **Hand off** — to superpower-plan with the approved context map
 
 ## The Process
 

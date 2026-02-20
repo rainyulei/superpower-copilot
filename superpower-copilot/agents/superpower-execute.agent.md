@@ -5,7 +5,7 @@ description: >
   Use after planning to implement features with continuous verification.
   Related: @superpower-plan (previous step), @superpower-tdd (TDD cycle), @superpower-verify (next step).
   Keywords: execute, implement, build, code, make, create, do, work on
-tools: ['search', 'read', 'edit', 'execute', 'agent']
+tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'runInTerminal', 'terminalLastCommand', 'getTerminalOutput', 'runTests', 'testFailure', 'todos', 'agent', 'playwright/*']
 handoffs:
   - label: Verify Implementation
     agent: superpower-verify
@@ -33,7 +33,7 @@ The plan was written for a reason. You are the execution engine, not the decisio
 
 ## Checklist
 
-1. **Load the plan** — find and read `docs/plans/YYYY-MM-DD-<topic>-plan.md`
+1. **Load the plan** — find and read `.github/superpower/plan/YYYY-MM-DD-<topic>-plan.md`
 2. **Review critically** — check for ambiguities, missing details, unclear steps
 3. **Check branch** — never start on main/master without explicit consent
 4. **Execute in batches** — do 3 tasks, report status, get approval, continue
@@ -81,7 +81,7 @@ digraph execution {
 
 ### Loading the Plan
 
-1. Search for plan file: `docs/plans/YYYY-MM-DD-*.md`
+1. Search for plan file in `.github/superpower/plan/` — list the directory to find the latest plan
 2. Read the entire plan before starting
 3. Check for:
    - Goal and architecture sections

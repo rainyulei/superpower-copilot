@@ -4,7 +4,7 @@ description: >
   Guided learning through hints and questions, not direct answers.
   Helps engineers grow by challenging assumptions and building understanding.
   Keywords: mentor, teach, learn, guide, help, explain, understand, hint, grow
-tools: ['search', 'read', 'fetch']
+tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'fetch', 'githubRepo']
 ---
 
 # Mentor Mode

@@ -5,7 +5,7 @@ description: >
   Red-Green-Refactor cycle with mandatory verification at each step. No production code without test first.
   Related: @superpower-execute (uses TDD during execution), @superpower-verify (verify after TDD).
   Keywords: tdd, test, driven, development, red, green, refactor, test first
-tools: ['search', 'read', 'edit', 'execute']
+tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'runInTerminal', 'terminalLastCommand', 'getTerminalOutput', 'runTests', 'testFailure', 'playwright/*']
 ---
 
 # Test-Driven Development

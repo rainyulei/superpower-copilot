@@ -4,7 +4,7 @@ description: >
   Critical thinking through Socratic questioning. Challenges assumptions,
   probes reasoning, never gives direct answers — only asks Why.
   Keywords: think, why, challenge, assumption, question, reason, evaluate, critique
-tools: ['search', 'read', 'fetch']
+tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'fetch', 'githubRepo']
 ---
 
 # Critical Thinking Mode

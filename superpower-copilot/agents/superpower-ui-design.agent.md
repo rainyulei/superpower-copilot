@@ -4,7 +4,7 @@ description: >
   UX/UI design research: Jobs-to-be-Done analysis, user journey mapping,
   and design artifacts. Use before any UI work to understand users first.
   Keywords: ui, ux, design, user, journey, persona, figma, flow, wireframe, accessibility
-tools: ['search', 'read', 'fetch']
+tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'fetch', 'githubRepo', 'playwright/*']
 handoffs:
   - label: Start Implementation Plan
     agent: superpower-plan
@@ -37,7 +37,7 @@ Feature requests describe WHAT users want. Your job is to understand WHY they wa
 3. **Journey mapping** — map what users think, feel, do at each stage
 4. **Flow specification** — create Figma-ready flow descriptions
 5. **Accessibility requirements** — keyboard, screen reader, visual, touch targets
-6. **Save artifacts** — to `docs/ux/[feature]-*.md`
+6. **Save artifacts** — to `.github/superpower/ux/[feature]-*.md`
 7. **Hand off** — to superpower-plan for implementation
 
 ## Related Agents
@@ -179,9 +179,9 @@ Always include these in flow specifications:
 
 Save all research artifacts:
 
-1. `docs/ux/[feature]-jtbd.md` — Jobs-to-be-Done analysis
-2. `docs/ux/[feature]-journey.md` — User journey map
-3. `docs/ux/[feature]-flow.md` — Flow specification + accessibility requirements
+1. `.github/superpower/ux/[feature]-jtbd.md` — Jobs-to-be-Done analysis
+2. `.github/superpower/ux/[feature]-journey.md` — User journey map
+3. `.github/superpower/ux/[feature]-flow.md` — Flow specification + accessibility requirements
 
 ## When to Escalate to Human
 
