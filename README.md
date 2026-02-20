@@ -1,185 +1,126 @@
 # Superpower Copilot
 
-**9 AI workflow agents for GitHub Copilot: brainstorm, plan, execute, verify, finish, TDD, debug, review, respond**
+**9 structured AI workflow agents for GitHub Copilot Chat**
 
-Superpower Copilot provides 9 specialized workflow agents as Custom Agents for GitHub Copilot. Each agent has a complete system prompt with rigorous processes, examples, and anti-patterns to ensure high-quality software development.
+Superpower Copilot brings disciplined, process-driven development workflows to GitHub Copilot through VS Code's [Custom Agents](https://code.visualstudio.com/docs/copilot/chat/chat-agents) feature. Each agent enforces a specific development practice — from brainstorming and planning to TDD, debugging, and code review — so you can work with the same rigor that professional engineering teams demand.
 
-## ✨ The 9 Agents
+## Why This Exists
 
-### 🎨 @superpower-brainstorm
-**Explore ideas and design before implementation**
+GitHub Copilot is powerful, but it lacks opinionated development workflows. Without structure, AI-assisted coding can lead to:
 
-Turn ideas into fully formed designs through collaborative dialogue. Asks clarifying questions, proposes approaches with trade-offs, presents design sections for approval, and saves design documents.
+- Skipping design and jumping straight to implementation
+- Writing code without tests, or tests after the fact
+- Debugging by guessing instead of systematic root-cause analysis
+- Claiming work is "done" without verification
 
-**When to use:**
-- Starting any new feature or change
-- Unclear requirements
-- Multiple implementation approaches possible
-- Need to explore design trade-offs
+Superpower Copilot solves this by providing 9 agents, each with a rigorous system prompt (200-300 lines) that enforces best practices. The agents are inspired by the [Superpowers](https://github.com/cline/superpowers) skill framework and adapted for GitHub Copilot's agent architecture.
 
-**Handoff:** Transitions to `@superpower-plan` when design is approved
+## The 9 Agents
 
----
+| Agent | Purpose |
+|-------|---------|
+| `@superpower-brainstorm` | Explore ideas, clarify requirements, produce design documents |
+| `@superpower-plan` | Break designs into bite-sized, testable implementation tasks |
+| `@superpower-execute` | Execute plans step by step in batches with review checkpoints |
+| `@superpower-verify` | Run all verification commands before claiming completion |
+| `@superpower-finish` | Merge, create PR, keep branch, or discard — structured options |
+| `@superpower-tdd` | Red-Green-Refactor cycle with strict discipline |
+| `@superpower-debug` | 4-phase systematic debugging: root cause before fixes |
+| `@superpower-review` | Structured code review against plan and requirements |
+| `@superpower-respond` | Process review feedback with technical rigor, not blind agreement |
 
-### 📋 @superpower-plan
-**Create a step-by-step implementation plan**
+## Recommended Workflow
 
-Breaks down designs into bite-sized, actionable tasks. Every task includes exact file paths, complete code blocks, exact commands with expected output. Each step has embedded TDD instructions.
-
-**When to use:**
-- Have an approved design
-- Multi-step implementations
-- Need a roadmap before coding
-
-**Handoff:** Transitions to `@superpower-execute` when plan is ready
-
----
-
-### ⚙️ @superpower-execute
-**Execute an implementation plan step by step**
-
-Follows the plan exactly with no improvisation. Works in batches of 3 tasks, reports progress for review, runs tests after each task. Stops and asks when stuck instead of guessing.
-
-**When to use:**
-- Have a written plan file
-- Complex multi-file changes
-- Want structured implementation
-
-**Handoff:** Transitions to `@superpower-verify` when all tasks complete
-
----
-
-### ✅ @superpower-verify
-**Verify work before claiming completion**
-
-Runs every verification command BEFORE claiming any status. Tests → linter → build → requirements check. Provides evidence, never claims "should work" or "seems fine".
-
-**When to use:**
-- After implementing a feature
-- Before committing code
-- Before creating a PR
-
-**Handoff:** Transitions to `@superpower-finish` (pass) or `@superpower-debug` (fail)
-
----
-
-### 🏁 @superpower-finish
-**Finish development branch (merge, PR, or discard)**
-
-Verifies tests pass, determines base branch, presents 4 options: merge locally, create PR, keep as-is, or discard. Executes choice and cleans up.
-
-**When to use:**
-- Feature is complete and verified
-- Ready to integrate changes
-- Need to create a PR
-
-**Handoff:** Optionally transitions to `@superpower-review` for final review
-
----
-
-### 🔴 @superpower-tdd
-**Test-driven development: red-green-refactor cycle**
-
-Enforces the Red-Green-Refactor discipline. Write failing test → verify it fails → write minimal code → verify it passes → refactor. Includes good/bad examples and anti-rationalization tables.
-
-**When to use:**
-- Building new functionality
-- Want high test coverage
-- Practicing TDD discipline
-
-**No handoff** (standalone, reusable anytime)
-
----
-
-### 🐛 @superpower-debug
-**Systematic debugging: find root cause before fixing**
-
-4 phases: Root Cause Investigation → Pattern Analysis → Hypothesis Testing → Implementation. Phase 1 MUST complete before proposing any fix. Stops after 3 failed fixes to question architecture.
-
-**When to use:**
-- Tests are failing
-- Unexpected behavior
-- Production issues
-
-**No handoff** (standalone, reusable anytime)
-
----
-
-### 👀 @superpower-review
-**Request structured code review on recent changes**
-
-Gets git diff, analyzes against plan/requirements, categorizes issues (Critical/Important/Minor), provides structured report with line references. Checks correctness, security, edge cases, test coverage, DRY/YAGNI.
-
-**When to use:**
-- Before creating a PR
-- After completing a feature
-- Want quality feedback
-
-**Handoff:** Transitions to `@superpower-respond` to address feedback
-
----
-
-### 💬 @superpower-respond
-**Process code review feedback with technical rigor**
-
-READ → UNDERSTAND → VERIFY → EVALUATE → RESPOND → IMPLEMENT. Never says "you're absolutely right" performatively. Pushes back when feedback breaks functionality, lacks context, or violates YAGNI.
-
-**When to use:**
-- Received PR comments
-- Need to address review feedback
-- Want to verify suggestions
-
-**No handoff** (terminal agent in review chain)
-
----
-
-## 🔄 Workflow Chain
+The agents are designed to work as a chain. Start from the left and move right:
 
 ```
-@superpower-brainstorm → @superpower-plan → @superpower-execute → @superpower-verify → @superpower-finish → @superpower-review → @superpower-respond
+brainstorm → plan → execute → verify → finish
                                  ↓
-                         @superpower-tdd or @superpower-debug (as needed)
+                         tdd / debug (as needed)
+                                 ↓
+                        review → respond
 ```
 
-Each agent includes handoff buttons to guide you to the next logical step.
+**Full feature workflow:**
 
-## 🌐 Language Support
+1. `@superpower-brainstorm` — Explore the problem, ask questions, produce a design doc
+2. `@superpower-plan` — Turn the design into a step-by-step implementation plan
+3. `@superpower-execute` — Implement the plan in batches of 3 tasks
+4. `@superpower-verify` — Run tests, linter, build — evidence before claims
+5. `@superpower-finish` — Merge locally, create PR, or keep branch
 
-All agents support both **English** and **简体中文 (Simplified Chinese)**.
+**Standalone agents** (use anytime):
 
-## 📦 Requirements
+- `@superpower-tdd` — When building any new functionality
+- `@superpower-debug` — When something breaks
+- `@superpower-review` — Before merging
+- `@superpower-respond` — When processing review feedback
 
-- **VS Code**: Version 1.99.0 or higher
-- **GitHub Copilot**: Active subscription with Custom Agents feature
+## Installation
 
-## 🚀 Installation & Usage
+1. Install **Superpower Copilot** from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=rainlei.superpower-copilot)
+2. The extension copies 9 agent files to `~/.superpower-copilot/agents/` and registers them globally
+3. Open Copilot Chat and select any `@superpower-*` agent from the dropdown
 
-1. Install **Superpower Copilot** from VS Code Marketplace
-2. On activation, 9 `.agent.md` files are copied to your VS Code user profile
-3. Agents are auto-registered and appear in Copilot Chat
-4. Use agents by name:
+## Requirements
+
+- VS Code 1.99.0 or higher
+- GitHub Copilot with Custom Agents support
+
+## Usage
+
+Open Copilot Chat (Ctrl+Shift+I / Cmd+Shift+I) and type:
 
 ```
-@superpower-brainstorm I need to add user authentication
-@superpower-tdd Implement a shopping cart
-@superpower-debug Why is checkout failing?
+@superpower-brainstorm I need to add user authentication to my Express app
 ```
 
-The agents will guide you through their processes step by step.
+```
+@superpower-tdd Implement a shopping cart with add/remove/total
+```
 
-## 🎯 Key Features
+```
+@superpower-debug Why is the checkout endpoint returning 500?
+```
 
-- **Superpowers-grade prompts**: Each agent has 200-300 lines of rigorous instructions
-- **Hard gates**: Agents enforce discipline (e.g., no code without design, no fixes without root cause)
-- **Built-in tools**: search, read, edit, execute, agent (for handoffs)
-- **Good/Bad examples**: Every agent shows what to do and what NOT to do
-- **Anti-rationalization tables**: Preempt common excuses for skipping process
-- **Native workflow chaining**: Handoff buttons connect agents seamlessly
+The agent will guide you through its process step by step. Each agent enforces gates — for example, `@superpower-debug` will not let you propose fixes until root cause investigation is complete.
 
-## 📄 License
+## What Makes These Agents Different
 
-MIT License - see LICENSE file for details.
+**Hard gates, not suggestions.** Each agent has explicit rules about what must happen before moving forward. The debug agent requires root cause analysis before fixes. The TDD agent requires a failing test before implementation code. The verify agent requires fresh command output before any completion claim.
 
----
+**Anti-rationalization tables.** Every agent includes tables of common excuses ("it's too simple to test", "I'll write tests after") with rebuttals. This prevents the AI from taking shortcuts.
 
-**Built with discipline. Shipped with confidence. 🚀**
+**Good and bad examples.** Agents show concrete examples of correct and incorrect behavior, so the AI understands the standard.
+
+**Workflow handoffs.** Agents include handoff buttons that connect to the next logical step in the chain.
+
+## Best Practices
+
+- **Start with brainstorm** for any non-trivial feature. Spending 10 minutes on design saves hours of rework.
+- **Use TDD for all new code.** The `@superpower-tdd` agent enforces Red-Green-Refactor. If you didn't see the test fail, you don't know it tests the right thing.
+- **Verify before claiming done.** The `@superpower-verify` agent requires running commands and showing output. No "should work" or "looks correct".
+- **Debug systematically.** When something breaks, resist the urge to guess. Use `@superpower-debug` to trace root cause first.
+- **Review your own work.** Use `@superpower-review` before creating a PR. It catches issues you missed.
+
+## How It Works
+
+On activation, the extension:
+
+1. Copies 9 `.agent.md` files from the extension bundle to `~/.superpower-copilot/agents/`
+2. Registers the path `~/.superpower-copilot/agents` in VS Code's `chat.agentFilesLocations` setting (user-level)
+3. VS Code discovers the agents and adds them to the Copilot Chat dropdown
+
+On deactivation, the extension cleans up the copied files and removes the setting entry.
+
+## Language Support
+
+All agents support both English and Simplified Chinese.
+
+## Credits
+
+Inspired by the [Superpowers](https://github.com/cline/superpowers) skill framework. Adapted from shell-based skills to VS Code Custom Agents with native Copilot integration (tools, handoffs, agent references).
+
+## License
+
+MIT
