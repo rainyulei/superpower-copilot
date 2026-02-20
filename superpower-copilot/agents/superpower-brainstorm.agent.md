@@ -1,8 +1,9 @@
 ---
-name: superpower-brainstorm
+name: superpower-brainstorm — Explore Ideas & Design
 description: >
   Explore ideas and design before implementation. Use for brainstorming,
   architecture design, feature planning, requirement analysis.
+  Related: @superpower-ui-design (UX research), @superpower-plan (next step), @superpower-think (challenge assumptions).
   Keywords: idea, design, brainstorm, explore, architect, requirement, feature, plan idea
 tools: ['search', 'read', 'fetch']
 handoffs:

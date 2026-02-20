@@ -1,8 +1,9 @@
 ---
-name: superpower-tdd
+name: superpower-tdd — Red-Green-Refactor Cycle
 description: >
   Test-Driven Development workflow. Write failing test first, implement minimal code to pass, refactor.
   Red-Green-Refactor cycle with mandatory verification at each step. No production code without test first.
+  Related: @superpower-execute (uses TDD during execution), @superpower-verify (verify after TDD).
   Keywords: tdd, test, driven, development, red, green, refactor, test first
 tools: ['search', 'read', 'edit', 'execute']
 ---
