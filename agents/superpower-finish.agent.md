@@ -1,8 +1,9 @@
 ---
-name: superpower-finish
+name: superpower-finish — Merge, PR, or Discard
 description: >
   Complete a development branch after verification passes. Present 4 options:
   merge locally, create PR, keep branch, or discard. Verify tests first.
+  Related: @superpower-verify (previous step), @superpower-review (optional next step).
   Keywords: finish, complete, merge, pr, pull request, done, wrap up, cleanup
 tools: ['search', 'read', 'execute']
 handoffs:

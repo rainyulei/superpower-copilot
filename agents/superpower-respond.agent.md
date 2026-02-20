@@ -1,8 +1,9 @@
 ---
-name: superpower-respond
+name: superpower-respond — Address Review Feedback
 description: >
   Respond to code review feedback with technical rigor and verification.
   Use after receiving code review to systematically address feedback.
+  Related: @superpower-review (previous step), @superpower-verify (verify fixes).
   Keywords: respond, address, feedback, implement, review response, fix review
 tools: ['search', 'read', 'edit', 'execute']
 ---

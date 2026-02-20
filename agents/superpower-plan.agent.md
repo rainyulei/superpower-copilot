@@ -1,8 +1,9 @@
 ---
-name: superpower-plan
+name: superpower-plan — Step-by-Step Implementation Plan
 description: >
   Transform approved designs into executable implementation plans with bite-sized TDD tasks.
   Use after brainstorming to create detailed step-by-step plans.
+  Related: @superpower-brainstorm (previous step), @superpower-context (dependency mapping), @superpower-execute (next step).
   Keywords: plan, implementation, roadmap, tasks, steps, how to implement
 tools: ['search', 'read', 'fetch', 'agent']
 handoffs:

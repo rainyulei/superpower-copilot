@@ -1,8 +1,9 @@
 ---
-name: superpower-execute
+name: superpower-execute — Execute Plans Task by Task
 description: >
   Execute implementation plans task-by-task following TDD discipline.
   Use after planning to implement features with continuous verification.
+  Related: @superpower-plan (previous step), @superpower-tdd (TDD cycle), @superpower-verify (next step).
   Keywords: execute, implement, build, code, make, create, do, work on
 tools: ['search', 'read', 'edit', 'execute', 'agent']
 handoffs:
