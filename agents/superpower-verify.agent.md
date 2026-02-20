@@ -1,8 +1,9 @@
 ---
-name: superpower-verify
+name: superpower-verify — Evidence Before Claims
 description: >
   Verify implementation is complete and correct before claiming success.
   Run tests, linters, build, check requirements. Evidence before assertions.
+  Related: @superpower-execute (previous step), @superpower-finish (next step), @superpower-debug (if fails).
   Keywords: verify, test, check, validate, confirm, evidence, pass, complete
 tools: ['search', 'read', 'execute']
 handoffs:

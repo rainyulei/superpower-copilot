@@ -1,8 +1,9 @@
 ---
-name: superpower-debug
+name: superpower-debug — Root Cause Before Fixes
 description: >
   Systematic debugging with root cause investigation before fixes.
   Use when encountering bugs, test failures, unexpected behavior, or errors.
+  Related: @superpower-think (challenge hypotheses), @superpower-tdd (write regression test), @superpower-verify (verify fix).
   Keywords: bug, error, fail, broken, crash, debug, investigate, diagnose, trace
 tools: ['search', 'read', 'edit', 'execute']
 ---

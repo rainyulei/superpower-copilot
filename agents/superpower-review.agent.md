@@ -1,8 +1,9 @@
 ---
-name: superpower-review
+name: superpower-review — Structured Code Review
 description: >
   Conduct thorough code review against plan and requirements.
   Use after implementation is complete and tests pass.
+  Related: @superpower-finish (previous step), @superpower-respond (address feedback).
   Keywords: review, check, verify, assess, evaluate, code review, feedback
 tools: ['search', 'read', 'agent']
 handoffs:
