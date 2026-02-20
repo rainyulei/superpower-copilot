@@ -16,7 +16,27 @@
   "keywords": ["copilot", "agent", "tdd", "code-review", "debugging", "workflow", "brainstorm", "plan"],
   "main": "./dist/extension.js",
   "activationEvents": ["onStartupFinished"],
-  "contributes": {},
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "superpower.router",
+        "fullName": "Superpower",
+        "name": "superpower",
+        "description": "AI workflow assistant with interactive feedback UI",
+        "isSticky": true,
+        "commands": [
+          {
+            "name": "brainstorm",
+            "description": "Explore ideas and design solutions"
+          },
+          {
+            "name": "plan",
+            "description": "Create step-by-step implementation plan"
+          }
+        ]
+      }
+    ]
+  },
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
