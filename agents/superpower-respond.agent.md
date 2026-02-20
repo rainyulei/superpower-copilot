@@ -5,7 +5,7 @@ description: >
   Use after receiving code review to systematically address feedback.
   Related: @superpower-review (previous step), @superpower-verify (verify fixes).
   Keywords: respond, address, feedback, implement, review response, fix review
-tools: ['search', 'read', 'edit', 'execute']
+tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'runInTerminal', 'terminalLastCommand', 'getTerminalOutput', 'runTests', 'testFailure']
 ---
 
 # Code Review Response Protocol

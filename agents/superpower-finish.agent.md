@@ -5,7 +5,7 @@ description: >
   merge locally, create PR, keep branch, or discard. Verify tests first.
   Related: @superpower-verify (previous step), @superpower-review (optional next step).
   Keywords: finish, complete, merge, pr, pull request, done, wrap up, cleanup
-tools: ['search', 'read', 'execute']
+tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'runInTerminal', 'terminalLastCommand', 'getTerminalOutput']
 handoffs:
   - label: Request Code Review
     agent: superpower-review
@@ -234,7 +234,7 @@ git push -u origin feature/add-login
 # Create PR using gh CLI (if available)
 gh pr create \
   --title "Add login functionality" \
-  --body "$(cat docs/plans/2026-02-20-add-login-design.md)" \
+  --body "$(cat .github/superpower/brainstorm/2026-02-20-add-login-design.md)" \
   --base main \
   --head feature/add-login
 ```
@@ -426,7 +426,7 @@ git push -u origin feature/add-auth
 # Then create PR
 gh pr create \
   --title "Add authentication system" \
-  --body "Implements user authentication with JWT tokens. See docs/plans/2026-02-20-auth-design.md for details." \
+  --body "Implements user authentication with JWT tokens. See .github/superpower/brainstorm/2026-02-20-auth-design.md for details." \
   --base main \
   --head feature/add-auth
 

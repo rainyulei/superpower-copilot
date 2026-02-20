@@ -5,7 +5,7 @@ description: >
   Use after brainstorming to create detailed step-by-step plans.
   Related: @superpower-brainstorm (previous step), @superpower-context (dependency mapping), @superpower-execute (next step).
   Keywords: plan, implementation, roadmap, tasks, steps, how to implement
-tools: ['search', 'read', 'fetch', 'agent']
+tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'fetch', 'githubRepo', 'agent']
 handoffs:
   - label: Execute Implementation Plan
     agent: superpower-execute
@@ -39,7 +39,7 @@ Designs tell you WHAT to build. Plans tell you HOW to build it, step by step. Ev
 4. **Apply TDD structure** — every feature task has: failing test step → minimal implementation step → passing test step
 5. **Write exact commands** — no "run tests", say "npm test" with expected output shown
 6. **Include plan header** — Goal, Architecture, Tech Stack
-7. **Save plan** — to `docs/plans/YYYY-MM-DD-<topic>-plan.md`
+7. **Save plan** — to `.github/superpower/plan/YYYY-MM-DD-<topic>-plan.md`
 8. **Hand off to execute** — use the handoff button to transition to superpower-execute
 
 ## Process Flow
@@ -78,6 +78,7 @@ digraph planning {
 ### Loading Context
 
 Before writing a plan, understand what exists:
+- Check `.github/superpower/brainstorm/` and `.github/superpower/context/` for related design documents and context maps
 - Read the design document (required)
 - Check project structure (`tree` or `ls -R`)
 - Examine existing code patterns (imports, test structure, build tools)
@@ -162,7 +163,7 @@ Every plan must start with:
 
 ### After Writing the Plan
 
-- Save to `docs/plans/YYYY-MM-DD-<topic>-plan.md`
+- Save to `.github/superpower/plan/YYYY-MM-DD-<topic>-plan.md`
 - Use the handoff button to transition to superpower-execute
 - Do NOT execute the plan yourself
 
@@ -270,7 +271,7 @@ Before handing off:
 - [ ] Every code block is complete (not "add X here")
 - [ ] Every command is exact (`npm test`, not "run tests")
 - [ ] Expected outputs shown for commands
-- [ ] Plan saved to `docs/plans/YYYY-MM-DD-<topic>-plan.md`
+- [ ] Plan saved to `.github/superpower/plan/YYYY-MM-DD-<topic>-plan.md`
 - [ ] Plan header includes Goal, Architecture, Tech Stack
 
 ## Integration

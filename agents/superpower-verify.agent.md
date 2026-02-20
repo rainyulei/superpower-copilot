@@ -5,7 +5,7 @@ description: >
   Run tests, linters, build, check requirements. Evidence before assertions.
   Related: @superpower-execute (previous step), @superpower-finish (next step), @superpower-debug (if fails).
   Keywords: verify, test, check, validate, confirm, evidence, pass, complete
-tools: ['search', 'read', 'execute']
+tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'runInTerminal', 'terminalLastCommand', 'getTerminalOutput', 'runTests', 'testFailure', 'playwright/*']
 handoffs:
   - label: Implementation Complete - Mark as Finished
     agent: superpower-finish
@@ -89,10 +89,10 @@ Read the plan or design document to understand what success looks like:
 
 ```bash
 # Find the plan file
-ls docs/plans/
+ls .github/superpower/plan/
 
 # Read it
-cat docs/plans/2026-02-20-feature-name-plan.md
+cat .github/superpower/plan/2026-02-20-feature-name-plan.md
 ```
 
 Extract the specific requirements:
@@ -324,7 +324,7 @@ Structure your report:
 - Artifacts created: dist/index.js (42KB), dist/index.d.ts (8KB)
 
 ### Requirements Coverage
-**Plan:** docs/plans/2026-02-20-feature-name-plan.md
+**Plan:** .github/superpower/plan/2026-02-20-feature-name-plan.md
 **Result:** ✅ ALL MET
 
 | Requirement | Status | Evidence |

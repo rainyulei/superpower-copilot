@@ -5,7 +5,7 @@ description: >
   Use when encountering bugs, test failures, unexpected behavior, or errors.
   Related: @superpower-think (challenge hypotheses), @superpower-tdd (write regression test), @superpower-verify (verify fix).
   Keywords: bug, error, fail, broken, crash, debug, investigate, diagnose, trace
-tools: ['search', 'read', 'edit', 'execute']
+tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'runInTerminal', 'terminalLastCommand', 'getTerminalOutput', 'runTests', 'testFailure', 'playwright/*']
 ---
 
 # Systematic Debugging Protocol

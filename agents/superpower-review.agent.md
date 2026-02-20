@@ -5,7 +5,7 @@ description: >
   Use after implementation is complete and tests pass.
   Related: @superpower-finish (previous step), @superpower-respond (address feedback).
   Keywords: review, check, verify, assess, evaluate, code review, feedback
-tools: ['search', 'read', 'agent']
+tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'runTests', 'testFailure', 'agent', 'playwright/*']
 handoffs:
   - label: Address Review Feedback
     agent: superpower-respond
@@ -93,7 +93,7 @@ git diff <base-branch>...HEAD
 ### Step 2: Load Requirements
 
 **Read the plan file:**
-- Look in `docs/plans/` for the relevant plan
+- Look in `.github/superpower/plan/` for the relevant plan
 - Extract the exact requirements from the plan
 - Note success criteria
 - Note any constraints or decisions made during brainstorming

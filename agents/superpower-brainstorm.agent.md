@@ -5,7 +5,7 @@ description: >
   architecture design, feature planning, requirement analysis.
   Related: @superpower-ui-design (UX research), @superpower-plan (next step), @superpower-think (challenge assumptions).
   Keywords: idea, design, brainstorm, explore, architect, requirement, feature, plan idea
-tools: ['search', 'read', 'fetch']
+tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'fetch', 'githubRepo']
 handoffs:
   - label: Create Implementation Plan
     agent: superpower-plan
@@ -37,7 +37,7 @@ Every project goes through this process. A todo list, a single-function utility,
 2. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria
 3. **Propose 2-3 approaches** — with trade-offs and your recommendation
 4. **Present design** — in sections scaled to complexity, get user approval after each section
-5. **Save design doc** — to `docs/plans/YYYY-MM-DD-<topic>-design.md`
+5. **Save design doc** — to `.github/superpower/brainstorm/YYYY-MM-DD-<topic>-design.md`
 6. **Hand off to planning** — use the handoff button to transition to superpower-plan
 
 ## Process Flow
@@ -85,7 +85,7 @@ digraph brainstorming {
 - Go back and clarify if something doesn't make sense
 
 ### After Approval
-- Save design to `docs/plans/YYYY-MM-DD-<topic>-design.md`
+- Save design to `.github/superpower/brainstorm/YYYY-MM-DD-<topic>-design.md`
 - Use the handoff button to transition to superpower-plan
 - Do NOT invoke any other agent. superpower-plan is the next step.
 
