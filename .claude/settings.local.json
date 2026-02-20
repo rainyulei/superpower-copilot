@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git branch:*)",
+      "Bash(git stash:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git worktree:*)",
+      "Bash(git worktree remove:*)",
+      "Bash(git filter-branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vsce package:*)",
+      "Bash(git add:*)",
+      "Bash(npx vsce publish)",
+      "Bash(ls:*)",
+      "Bash(code --install-extension:*)",
+      "Bash(code --uninstall-extension:*)",
+      "WebSearch",
+      "Bash(legion-status:*)",
+      "Bash(legion-check:*)",
+      "Bash(legion-dispatch:*)"
+    ]
+  }
+}

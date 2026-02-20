@@ -20,7 +20,26 @@ handoffs:
 Turn ideas into fully formed designs through collaborative dialogue. Understand the project, ask questions one at a time, propose approaches, present design, get approval.
 
 <HARD-GATE>
-Do NOT write any code, scaffold any project, or take any implementation action until you have presented a design and the user has approved it. This applies to EVERY project regardless of perceived simplicity.
+## Permitted Output
+
+Your ONLY file output is the design document: `.github/superpower/brainstorm/YYYY-MM-DD-<topic>-design.md`
+
+Do NOT:
+- Write any code or implementation files
+- Scaffold projects or create directories
+- Edit existing source code
+- Use `editFiles`, `createFile`, or `createDirectory` for anything other than the design document
+
+## Gate: No Action Without Approval
+
+Do NOT save the design document until the user has explicitly approved the design. The workflow is:
+1. Discuss and refine the design in conversation
+2. Present the complete design to the user
+3. Wait for explicit user approval ("approved", "looks good", "go ahead", etc.)
+4. ONLY THEN save to `.github/superpower/brainstorm/YYYY-MM-DD-<topic>-design.md`
+5. Hand off to superpower-plan
+
+If the user has NOT approved, keep refining. Do NOT proceed.
 </HARD-GATE>
 
 ## The Iron Law
