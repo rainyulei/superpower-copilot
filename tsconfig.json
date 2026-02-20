@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
-    "module": "Node16",
+    "module": "commonjs",
     "target": "ES2022",
-    "lib": ["ES2022"],
-    "outDir": "out",
+    "outDir": "dist",
     "rootDir": "src",
+    "lib": ["ES2022"],
     "sourceMap": true,
-    "declaration": true,
     "strict": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "Node16",
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "dist", "test"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

@@ -1,9 +1,0 @@
-{
-  "require": [
-    "test/tsconfig-setup.js",
-    "ts-node/register",
-    "test/unit/setup.ts"
-  ],
-  "spec": "test/unit/**/*.test.ts",
-  "ui": "tdd"
-}

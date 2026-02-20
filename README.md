@@ -1,209 +1,180 @@
 # Superpower Copilot
 
-**Structured development workflows for GitHub Copilot Chat**
+**9 AI workflow agents for GitHub Copilot: brainstorm, plan, execute, verify, finish, TDD, debug, review, respond**
 
-Superpower Copilot enhances GitHub Copilot Chat with disciplined software development workflows. It provides 9 specialized skills that guide you through ideation, planning, implementation, testing, debugging, code review, and deployment—ensuring quality at every step.
+Superpower Copilot provides 9 specialized workflow agents as Custom Agents for GitHub Copilot. Each agent has a complete system prompt with rigorous processes, examples, and anti-patterns to ensure high-quality software development.
 
-## ✨ Features
+## ✨ The 9 Agents
 
-### 🎨 Brainstorm
+### 🎨 @superpower-brainstorm
 **Explore ideas and design before implementation**
 
-Use `/brainstorm` to think through your feature or task before writing code. Explores requirements, edge cases, design alternatives, and creates a clear mental model before diving into implementation.
+Turn ideas into fully formed designs through collaborative dialogue. Asks clarifying questions, proposes approaches with trade-offs, presents design sections for approval, and saves design documents.
 
 **When to use:**
-- Starting a new feature
+- Starting any new feature or change
 - Unclear requirements
 - Multiple implementation approaches possible
 - Need to explore design trade-offs
 
-**Example:**
-```
-@superpower /brainstorm
-I need to add user authentication to the app
-```
+**Handoff:** Transitions to `@superpower-plan` when design is approved
 
-### 📋 Plan
+---
+
+### 📋 @superpower-plan
 **Create a step-by-step implementation plan**
 
-Use `/plan` to break down complex tasks into actionable, ordered steps. Creates detailed implementation plans that can be executed systematically, reducing cognitive load and ensuring nothing is missed.
+Breaks down designs into bite-sized, actionable tasks. Every task includes exact file paths, complete code blocks, exact commands with expected output. Each step has embedded TDD instructions.
 
 **When to use:**
+- Have an approved design
 - Multi-step implementations
-- Architectural changes
 - Need a roadmap before coding
-- Want to validate approach before executing
 
-**Example:**
-```
-@superpower /plan
-Add OAuth2 login with Google and GitHub providers
-```
+**Handoff:** Transitions to `@superpower-execute` when plan is ready
 
-### ⚙️ Execute
+---
+
+### ⚙️ @superpower-execute
 **Execute an implementation plan step by step**
 
-Use `/execute` to work through a written plan methodically. Follows plans created by `/plan`, executing each step with verification before moving forward.
+Follows the plan exactly with no improvisation. Works in batches of 3 tasks, reports progress for review, runs tests after each task. Stops and asks when stuck instead of guessing.
 
 **When to use:**
-- Have a written plan ready
+- Have a written plan file
 - Complex multi-file changes
 - Want structured implementation
-- Need progress tracking
 
-**Example:**
-```
-@superpower /execute
-Execute the OAuth2 implementation plan we created
-```
+**Handoff:** Transitions to `@superpower-verify` when all tasks complete
 
-### ✅ Verify
+---
+
+### ✅ @superpower-verify
 **Verify work before claiming completion**
 
-Use `/verify` to confirm your implementation works as expected. Runs tests, checks compilation, validates outputs, and ensures quality standards are met before marking work complete.
+Runs every verification command BEFORE claiming any status. Tests → linter → build → requirements check. Provides evidence, never claims "should work" or "seems fine".
 
 **When to use:**
-- Before committing code
 - After implementing a feature
+- Before committing code
 - Before creating a PR
-- Want confidence in your changes
 
-**Example:**
-```
-@superpower /verify
-Verify the authentication feature is working correctly
-```
+**Handoff:** Transitions to `@superpower-finish` (pass) or `@superpower-debug` (fail)
 
-### 🏁 Finish
+---
+
+### 🏁 @superpower-finish
 **Finish development branch (merge, PR, or discard)**
 
-Use `/finish` to complete your work properly. Guides you through creating commits, pull requests, merging to main, or cleaning up abandoned branches.
+Verifies tests pass, determines base branch, presents 4 options: merge locally, create PR, keep as-is, or discard. Executes choice and cleans up.
 
 **When to use:**
 - Feature is complete and verified
 - Ready to integrate changes
 - Need to create a PR
-- Want to clean up branches
 
-**Example:**
-```
-@superpower /finish
-Ready to merge the authentication feature
-```
+**Handoff:** Optionally transitions to `@superpower-review` for final review
 
-### 🔴 TDD
+---
+
+### 🔴 @superpower-tdd
 **Test-driven development: red-green-refactor cycle**
 
-Use `/tdd` to practice rigorous test-driven development. Guides you through writing failing tests first, implementing just enough code to pass, then refactoring with confidence.
+Enforces the Red-Green-Refactor discipline. Write failing test → verify it fails → write minimal code → verify it passes → refactor. Includes good/bad examples and anti-rationalization tables.
 
 **When to use:**
 - Building new functionality
 - Want high test coverage
-- Need design feedback from tests
 - Practicing TDD discipline
 
-**Example:**
-```
-@superpower /tdd
-Implement a shopping cart with add/remove/checkout operations
-```
+**No handoff** (standalone, reusable anytime)
 
-### 🐛 Debug
+---
+
+### 🐛 @superpower-debug
 **Systematic debugging: find root cause before fixing**
 
-Use `/debug` to investigate issues methodically. Uses scientific debugging: form hypotheses, gather evidence, isolate root causes, then apply minimal fixes.
+4 phases: Root Cause Investigation → Pattern Analysis → Hypothesis Testing → Implementation. Phase 1 MUST complete before proposing any fix. Stops after 3 failed fixes to question architecture.
 
 **When to use:**
 - Tests are failing
 - Unexpected behavior
 - Production issues
-- Need to understand why, not just fix
 
-**Example:**
-```
-@superpower /debug
-Users report checkout fails with empty cart error
-```
+**No handoff** (standalone, reusable anytime)
 
-### 👀 Review
+---
+
+### 👀 @superpower-review
 **Request structured code review on recent changes**
 
-Use `/review` to get thorough code review on your work. Analyzes recent commits, checks for bugs, security issues, design problems, test coverage, and provides actionable feedback.
+Gets git diff, analyzes against plan/requirements, categorizes issues (Critical/Important/Minor), provides structured report with line references. Checks correctness, security, edge cases, test coverage, DRY/YAGNI.
 
 **When to use:**
 - Before creating a PR
 - After completing a feature
 - Want quality feedback
-- Need fresh eyes on code
 
-**Example:**
-```
-@superpower /review
-Review my authentication implementation
-```
+**Handoff:** Transitions to `@superpower-respond` to address feedback
 
-### 💬 Respond
+---
+
+### 💬 @superpower-respond
 **Process code review feedback with technical rigor**
 
-Use `/respond` to handle code review comments professionally. Analyzes feedback, verifies it's technically sound, implements changes, and documents decisions.
+READ → UNDERSTAND → VERIFY → EVALUATE → RESPOND → IMPLEMENT. Never says "you're absolutely right" performatively. Pushes back when feedback breaks functionality, lacks context, or violates YAGNI.
 
 **When to use:**
 - Received PR comments
 - Need to address review feedback
 - Want to verify suggestions
-- Implementing reviewer requests
 
-**Example:**
-```
-@superpower /respond
-Address the security concerns in the code review
-```
+**No handoff** (terminal agent in review chain)
 
-## 🔄 Workflow Chaining
+---
 
-Skills can chain together naturally:
+## 🔄 Workflow Chain
 
 ```
-/brainstorm → /plan → /execute → /verify → /review → /respond → /finish
-                ↓
-               /tdd or /debug (as needed)
+@superpower-brainstorm → @superpower-plan → @superpower-execute → @superpower-verify → @superpower-finish → @superpower-review → @superpower-respond
+                                 ↓
+                         @superpower-tdd or @superpower-debug (as needed)
 ```
 
-Follow-up buttons appear after each skill to guide you to the next logical step.
+Each agent includes handoff buttons to guide you to the next logical step.
 
 ## 🌐 Language Support
 
-Superpower Copilot supports both **English** and **简体中文 (Simplified Chinese)**.
-
-**English examples:**
-- "I have a bug to fix"
-- "Let's write tests first"
-- "Time to brainstorm this feature"
-
-**Chinese examples (中文示例):**
-- "我需要调试这个问题" (I need to debug this issue)
-- "让我们写一个计划" (Let's write a plan)
-- "我想进行代码审查" (I want to do a code review)
+All agents support both **English** and **简体中文 (Simplified Chinese)**.
 
 ## 📦 Requirements
 
-- **VS Code**: Version 1.96.0 or higher
-- **GitHub Copilot Chat**: Active subscription required
+- **VS Code**: Version 1.99.0 or higher
+- **GitHub Copilot**: Active subscription with Custom Agents feature
 
-## 🚀 Usage
+## 🚀 Installation & Usage
 
-1. Install the extension from VS Code Marketplace
-2. Open a workspace/project
-3. Open GitHub Copilot Chat
-4. Type `@superpower` followed by a command or natural language:
+1. Install **Superpower Copilot** from VS Code Marketplace
+2. On activation, 9 `.agent.md` files are copied to your VS Code user profile
+3. Agents are auto-registered and appear in Copilot Chat
+4. Use agents by name:
 
 ```
-@superpower /brainstorm
-@superpower I need help with a bug
-@superpower 让我们写个计划
+@superpower-brainstorm I need to add user authentication
+@superpower-tdd Implement a shopping cart
+@superpower-debug Why is checkout failing?
 ```
 
-The extension intelligently routes your requests to the appropriate skill based on keywords and context.
+The agents will guide you through their processes step by step.
+
+## 🎯 Key Features
+
+- **Superpowers-grade prompts**: Each agent has 200-300 lines of rigorous instructions
+- **Hard gates**: Agents enforce discipline (e.g., no code without design, no fixes without root cause)
+- **Built-in tools**: search, read, edit, execute, agent (for handoffs)
+- **Good/Bad examples**: Every agent shows what to do and what NOT to do
+- **Anti-rationalization tables**: Preempt common excuses for skipping process
+- **Native workflow chaining**: Handoff buttons connect agents seamlessly
 
 ## 📄 License
 
