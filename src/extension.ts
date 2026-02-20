@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
+import { registerParticipant } from './participant';
 
 const AGENTS_DIR = 'agents';
 const SETTING_KEY = 'chat.agentFilesLocations';
@@ -38,6 +39,9 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.window.showInformationMessage(
       `Superpower Copilot: ${agentFiles.length} agents activated.`
     );
+
+    // Register chat participant
+    registerParticipant(context);
   } catch (err) {
     vscode.window.showErrorMessage(
       `Superpower Copilot: Failed to register agents — ${err}`
