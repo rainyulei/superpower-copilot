@@ -56,19 +56,8 @@ async function forceRegisterAgentsPath(): Promise<void> {
   );
 }
 
-export function deactivate() {
-  // Best-effort cleanup on deactivation
-  try {
-    const targetDir = getTargetDir();
-    if (fs.existsSync(targetDir)) {
-      for (const file of fs.readdirSync(targetDir)) {
-        if (file.endsWith('.agent.md')) {
-          try { fs.unlinkSync(path.join(targetDir, file)); } catch {}
-        }
-      }
-      // Remove directory if empty
-      try { fs.rmdirSync(targetDir); } catch {}
-      try { fs.rmdirSync(path.dirname(targetDir)); } catch {}
-    }
-  } catch {}
-}
+// DO NOT clean up files or settings in deactivate().
+// VS Code calls deactivate() on extension UPDATE before the new version activates,
+// which would delete agent files and break registration.
+// Cleanup only happens via vscode:uninstall script (src/uninstall.ts).
+export function deactivate() {}

@@ -2,7 +2,7 @@
   "name": "superpower-copilot",
   "displayName": "Superpower Copilot",
   "description": "13 AI workflow agents for GitHub Copilot: brainstorm, plan, execute, verify, finish, TDD, debug, review, respond, UI design, think, mentor, context",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "publisher": "rainlei",
   "license": "MIT",
   "repository": {
