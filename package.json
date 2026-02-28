@@ -2,7 +2,7 @@
   "name": "superpower-copilot",
   "displayName": "Superpower Copilot",
   "description": "13 AI workflow agents for GitHub Copilot: brainstorm, plan, execute, verify, finish, TDD, debug, review, respond, UI design, think, mentor, context",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "publisher": "rainlei",
   "license": "MIT",
   "repository": {
@@ -13,10 +13,29 @@
     "vscode": "^1.99.0"
   },
   "categories": ["AI", "Chat"],
+  "icon": "icon.png",
   "keywords": ["copilot", "agent", "tdd", "code-review", "debugging", "workflow", "brainstorm", "plan"],
   "main": "./dist/extension.js",
   "activationEvents": ["onStartupFinished"],
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "superpower-copilot",
+          "title": "Superpower Copilot",
+          "icon": "icon.png"
+        }
+      ]
+    },
+    "views": {
+      "superpower-copilot": [
+        {
+          "type": "webview",
+          "id": "superpower-copilot.optionsView",
+          "name": "Options"
+        }
+      ]
+    },
     "languageModelTools": [
       {
         "name": "superpower-copilot_options",
@@ -24,8 +43,8 @@
         "canBeReferencedInPrompt": true,
         "displayName": "Options Picker",
         "icon": "$(list-selection)",
-        "modelDescription": "Present a question with 2-4 options to the user as a quick pick dialog. Use this tool whenever you need to ask the user a question with predefined choices. The user selects one option and the result is returned. Always use this tool instead of writing options as plain text in your response.",
-        "userDescription": "Show a quick pick with options for the user to choose from",
+        "modelDescription": "Present a question with 2-4 options to the user as an interactive sidebar panel. Use this tool whenever you need to ask the user a question with predefined choices. The user selects options and the result is returned. Supports single-select, multi-select, and free text input. Always use this tool instead of writing options as plain text in your response.",
+        "userDescription": "Show interactive options in the sidebar for the user to choose from",
         "inputSchema": {
           "type": "object",
           "properties": {
@@ -46,10 +65,27 @@
                   "description": {
                     "type": "string",
                     "description": "Optional longer description"
+                  },
+                  "group": {
+                    "type": "string",
+                    "description": "Optional group name for visual grouping"
                   }
                 },
                 "required": ["label"]
               }
+            },
+            "mode": {
+              "type": "string",
+              "enum": ["single", "multi"],
+              "description": "Selection mode: 'single' (default, click to submit) or 'multi' (toggle + confirm)"
+            },
+            "allowFreeText": {
+              "type": "boolean",
+              "description": "Whether to show a free text input area"
+            },
+            "freeTextPlaceholder": {
+              "type": "string",
+              "description": "Placeholder text for the free text area"
             }
           },
           "required": ["title", "options"]
