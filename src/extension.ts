@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import { OptionsTool } from './tools/options';
+import { OptionsViewProvider } from './webview/optionsViewProvider';
 
 const AGENTS_DIR = 'agents';
 const SETTING_KEY = 'chat.agentFilesLocations';
@@ -36,9 +37,21 @@ export function activate(context: vscode.ExtensionContext) {
     // 3. Force-register the path in settings (always write, don't skip)
     forceRegisterAgentsPath();
 
-    // 4. Register language model tools
+    // 4. Register sidebar webview
+    const optionsProvider = new OptionsViewProvider(context.extensionUri);
     context.subscriptions.push(
-      vscode.lm.registerTool('superpower-copilot_options', new OptionsTool())
+      vscode.window.registerWebviewViewProvider(
+        OptionsViewProvider.viewType,
+        optionsProvider,
+        { webviewOptions: { retainContextWhenHidden: true } }
+      )
+    );
+
+    // 5. Register language model tools (connected to sidebar provider)
+    const optionsTool = new OptionsTool();
+    optionsTool.setProvider(optionsProvider);
+    context.subscriptions.push(
+      vscode.lm.registerTool('superpower-copilot_options', optionsTool)
     );
 
     vscode.window.showInformationMessage(
