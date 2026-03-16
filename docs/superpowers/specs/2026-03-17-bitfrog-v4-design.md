@@ -224,6 +224,78 @@ BLOCKED             → 超出职责范围，建议 handoff 到其他 agent
 
 ---
 
+## API Status & Fallback
+
+### 当前 API 能力状态
+
+| 能力 | 状态 | 文档链接 |
+|------|------|---------|
+| `.agent.md` 自定义 Agent | **Stable** | [Custom agents in VS Code](https://code.visualstudio.com/docs/copilot/customization/custom-agents) |
+| `handoffs:` YAML 配置 | **Stable** | [Custom agents configuration](https://docs.github.com/en/copilot/reference/custom-agents-configuration) |
+| Agent Plugin (`plugin.json`) | **Preview** (VS Code 1.110+) | [Agent plugins in VS Code](https://code.visualstudio.com/docs/copilot/customization/agent-plugins) |
+| askQuestions carousel | **Stable** (已进入 VS Code 核心) | [VS Code Feb 2026 release](https://code.visualstudio.com/updates/v1_110) |
+| Agent Hooks | **Preview** | [VS Code agent docs](https://code.visualstudio.com/docs/copilot/agents/overview) |
+
+### 分层架构策略
+
+根据 API 稳定性分层实施：
+
+**第一层（基于 Stable API）：**
+- 7+1 个 `.agent.md` 文件 + `handoffs:` 配置 — 这部分今天就能工作
+- 如果 Agent Plugin 不可用，退回为 VS Code Extension，TypeScript 代码负责注册 agent 文件
+
+**第二层（基于 Preview API，需验证）：**
+- Agent Plugin 打包分发（`plugin.json`）— 如果可用则移除 TypeScript
+- Agent Hooks — 如果可用则替代手动初始化
+
+**第三层（需验证能力边界）：**
+- askQuestions 替代 sidebar — 需验证是否支持 multi-select、grouped options
+- 如果 askQuestions 能力不足，**Plan B**：保留轻量 webview 或接受纯文本选项交互
+
+### 主路由实现策略
+
+`bitfrog.agent.md` 作为主路由的实现方式取决于验证结果：
+
+- **优选方案**：纯 prompt 路由 — `bitfrog.agent.md` 的 prompt 中包含意图识别指令，利用 LM 能力分流，handoffs 按钮引导用户到子 agent
+- **备选方案**：保留轻量 TypeScript — 如果纯 prompt 路由不够可靠（如 command routing 和 state routing 需要程序化逻辑），保留 `participant/router.ts` 做路由，其余逻辑全在 `.agent.md` 中
+
+### 子代理实现方式
+
+本 spec 中的"子代理"指两种不同机制：
+
+1. **Handoffs**（用户可见）— 流程间流转，用户点击按钮切换 agent。基于 Stable API。
+2. **内部 scoped LM 调用**（用户不可见）— agent 内部发起独立 LM 请求处理子任务（如 review 的两阶段检查）。如需 TypeScript 支持，保留在备选方案中。
+
+---
+
+## Migration Path
+
+### 版本策略
+
+- v4.0 作为**新的 marketplace 条目**发布（`bit-frog`），不覆盖 `superpower-copilot`
+- v3.1 保持现有 marketplace 条目，标记为 deprecated，README 引导用户迁移到 BitFrog
+- 两者可以共存，不冲突
+
+### 迁移检查清单
+
+在删除 v3.1 旧代码之前，v4.0 必须达到以下功能对等：
+
+- [ ] 7+1 个 agent 全部可用，能正确响应用户调用
+- [ ] handoff 流程链正常工作（brainstorm → plan → execute → review）
+- [ ] 用户交互体验不低于 v3.1（askQuestions 或备选方案）
+- [ ] Agent 路由（command / context / LM 分类）准确率可接受
+- [ ] 中英文双语支持正常
+
+### 迁移时间线
+
+1. **Phase 0**：最小可行验证（验证 API 能力）
+2. **Phase 1**：基于 Stable API 构建核心（.agent.md + handoffs）
+3. **Phase 2**：集成 Preview API（Plugin 打包、Hooks）— 视验证结果决定
+4. **Phase 3**：中国哲学 prompt 逐个设计
+5. **Phase 4**：发布 BitFrog v4.0，deprecate v3.1
+
+---
+
 ## Risk & Validation
 
 ### Agent Plugin Preview 风险
@@ -232,12 +304,31 @@ Agent Plugin 目前是 Preview 状态，需要先做最小可行验证：
 
 1. 主路由 `bitfrog.agent.md` 能否正常注册和路由
 2. handoffs 在 plugin 模式下是否正常工作
-3. askQuestions 在 `.agent.md` 中是否可用
+3. askQuestions 是否支持 multi-select / grouped options / free text
 4. hooks 能否正常触发
+5. 纯 prompt 路由的意图识别准确率
 
 ### 验证策略
 
-先创建一个最小 plugin（1 个主路由 + 2 个子 agent + 1 个 handoff），验证核心能力后再全面迁移。
+先创建一个最小 plugin（1 个主路由 + 2 个子 agent + 1 个 handoff），验证核心能力后再全面迁移。如果 Agent Plugin 不可用，退回 VS Code Extension 模式，仅使用 Stable API。
+
+---
+
+## Success Criteria
+
+### 功能验收
+
+- [ ] 用户选择 `@bitfrog` 后能被正确路由到对应 agent
+- [ ] brainstorm → plan → execute → review handoff 链完整可用
+- [ ] debug agent 能独立诊断 + 修复，不强制依赖其他 agent
+- [ ] askQuestions（或备选方案）用户交互体验不低于 v3.1 sidebar
+- [ ] 状态协议（DONE/BLOCKED/...）在所有 agent 中一致工作
+
+### 用户体验验收
+
+- [ ] 下拉框 agent 数量 ≤ 8（含主路由）
+- [ ] 新用户无需阅读文档即可通过 @bitfrog 开始使用
+- [ ] 中英文双语支持
 
 ---
 
