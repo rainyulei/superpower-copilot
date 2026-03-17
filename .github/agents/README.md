@@ -1,25 +1,50 @@
 # BitFrog — Structured AI Development Agents for GitHub Copilot
 
-> 7+1 个结构化 AI 开发代理，为 GitHub Copilot 提供纪律性的开发工作流。
+> 7+1 个结构化 AI 开发代理，融合中国哲学底层思维，为 GitHub Copilot 提供有深度的开发工作流。
 
 ## Quick Start
 
 BitFrog agents 自动被 VS Code 发现（`.github/agents/` 目录）。打开 Copilot Chat，在 agent 下拉框中选择即可使用。
 
-**推荐入口：** 选择 `@bitfrog`，描述你想做什么，它会自动引导你到合适的 agent。
+**推荐入口：** 选择 `@bitfrog`，描述你想做什么，它会引导你到合适的 agent。
 
 ## Agents
 
-| Agent | 职责 | 何时使用 |
+| Agent | 职责 | 核心哲学 |
 |-------|------|---------|
-| **@bitfrog** | 主路由 | 不确定用哪个 agent 时，从这里开始 |
-| **@bitfrog-brainstorm** | 探索设计 | 有新想法、需要设计方案时 |
-| **@bitfrog-plan** | 规划拆解 | 设计确定后，需要拆解为可执行任务时 |
-| **@bitfrog-execute** | 执行开发 | 有计划后，开始写代码时 |
-| **@bitfrog-debug** | 诊断修复 | 遇到 bug、报错、问题时 |
-| **@bitfrog-review** | 审查收尾 | 代码写完，需要审查和合并时 |
-| **@bitfrog-mentor** | 学习引导 | 想理解代码、学习新概念时 |
-| **@bitfrog-ui-design** | UX 研究 | 涉及 UI/UX 设计、用户研究时 |
+| **@bitfrog** | 主路由 | 辨证路由 — 辨清意图再指路 |
+| **@bitfrog-brainstorm** | 探索设计 | 格物致知 — 穷究本质再论方案 |
+| **@bitfrog-plan** | 规划拆解 | 格物 + 辨证 — 先侦察地形再制定计划 |
+| **@bitfrog-execute** | 执行开发 | 知行合一 — 真知必行，不行非真知 |
+| **@bitfrog-debug** | 诊断修复 | 辨证论治 — 先辨本质层次再选策略 |
+| **@bitfrog-review** | 审查收尾 | 三省吾身 — 自省、互省、终省 |
+| **@bitfrog-mentor** | 学习引导 | 格物致知（过程本身） |
+| **@bitfrog-ui-design** | UX 研究 | 格物致知（对人）— 先明"神"再塑"形" |
+
+## Philosophy
+
+BitFrog 的底层思维体系（详见 `bitfrog-philosophy.md`）：
+
+**元准则：中庸之道** — 过犹不及。控制一切行为的"度"。
+
+**核心准则：**
+1. **格物致知** — 穷究事物本质，再论方案
+2. **知行合一** — 真知必行，不行非真知
+3. **辨证论治** — 先辨本质层次，再选策略
+
+**协作准则：**
+4. **阴阳互生** — 各司其职，心怀全局
+5. **三省吾身** — 自省、互省、终省
+
+### 与西方工程纪律的区别
+
+| 原版（外在约束） | BitFrog（内在驱动） |
+|----------------|-------------------|
+| Iron Laws — 绝对规则 | 知行合一 — 纪律来自理解 |
+| Hard Gates — 通过/不通过 | 中庸 — 恰当的度 |
+| Rationalization Blocking — 封堵借口 | 格物致知 — 理解到位，借口不会产生 |
+| Checklist inspection — 逐项打勾 | 三省吾身 — 反省思维过程 |
+| Optimal solution — 找最优解 | 中庸之道 — 找恰当解 |
 
 ## Workflow
 
@@ -31,17 +56,9 @@ brainstorm ──[进入计划]──▶ plan ──[开始执行]──▶ exec
                                                   debug
 ```
 
-每个箭头是一个 **handoff 按钮**，agent 完成后会在聊天框底部显示。点击即可流转，不点则留在当前对话。
+每个箭头是一个 **handoff 按钮**，点击即可流转，不点则留在当前对话。
 
-**独立入口：** `debug` 和 `mentor` 可以随时直接使用，不依赖流程链。
-
-## Core Principles
-
-1. **自闭环** — 每个 agent 能独立完成自己职责范围内的事
-2. **超出范围才 handoff** — 只有问题超出当前 agent 能力时才建议流转
-3. **TDD 纪律** — execute agent 遵循 Red-Green-Refactor
-4. **先诊断后修复** — debug agent 确认根因后才动手
-5. **两阶段 review** — 先检查 spec 合规，再检查代码质量
+**独立入口：** `debug` 和 `mentor` 可以随时直接使用。
 
 ## Language
 
