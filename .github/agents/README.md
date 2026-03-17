@@ -1,68 +1,68 @@
 # BitFrog — Structured AI Development Agents for GitHub Copilot
 
-> 7+1 个结构化 AI 开发代理，融合中国哲学底层思维，为 GitHub Copilot 提供有深度的开发工作流。
+> 7+1 structured AI development agents, infused with Chinese philosophical thinking, providing a deep development workflow for GitHub Copilot.
 
 ## Quick Start
 
-BitFrog agents 自动被 VS Code 发现（`.github/agents/` 目录）。打开 Copilot Chat，在 agent 下拉框中选择即可使用。
+BitFrog agents are automatically discovered by VS Code (`.github/agents/` directory). Open Copilot Chat and select from the agent dropdown to use them.
 
-**推荐入口：** 选择 `@bitfrog`，描述你想做什么，它会引导你到合适的 agent。
+**Recommended entry point:** Select `@bitfrog`, describe what you want to do, and it will guide you to the right agent.
 
 ## Agents
 
-| Agent | 职责 | 核心哲学 |
-|-------|------|---------|
-| **@bitfrog** | 主路由 | 辨证路由 — 辨清意图再指路 |
-| **@bitfrog-brainstorm** | 探索设计 | 格物致知 — 穷究本质再论方案 |
-| **@bitfrog-plan** | 规划拆解 | 格物 + 辨证 — 先侦察地形再制定计划 |
-| **@bitfrog-execute** | 执行开发 | 知行合一 — 真知必行，不行非真知 |
-| **@bitfrog-debug** | 诊断修复 | 辨证论治 — 先辨本质层次再选策略 |
-| **@bitfrog-review** | 审查收尾 | 三省吾身 — 自省、互省、终省 |
-| **@bitfrog-mentor** | 学习引导 | 格物致知（过程本身） |
-| **@bitfrog-ui-design** | UX 研究 | 格物致知（对人）— 先明"神"再塑"形" |
+| Agent | Role | Core Philosophy |
+|-------|------|-----------------|
+| **@bitfrog** | Main Router | Dialectical routing — discern intent before directing |
+| **@bitfrog-brainstorm** | Explore & Design | 格物致知 (Investigate the essence) — understand the true nature before proposing solutions |
+| **@bitfrog-plan** | Planning & Decomposition | 格物 (Investigation) + 辨证 (Dialectical analysis) — scout the terrain before making plans |
+| **@bitfrog-execute** | Implementation | 知行合一 (Unity of Knowledge and Action) — true knowledge demands action; inaction reveals ignorance |
+| **@bitfrog-debug** | Diagnosis & Fix | 辨证论治 (Dialectical diagnosis and treatment) — determine the true level before choosing a strategy |
+| **@bitfrog-review** | Review & Wrap-up | 三省吾身 (Reflect upon oneself) — self-reflection, peer reflection, final reflection |
+| **@bitfrog-mentor** | Guided Learning | 格物致知 (The process itself) |
+| **@bitfrog-ui-design** | UX Research | 格物致知 applied to people — first understand the 神 (spirit/need), then shape the 形 (form) |
 
 ## Philosophy
 
-BitFrog 的底层思维体系（详见 `bitfrog-philosophy.md`）：
+BitFrog's underlying thinking system (see `bitfrog-philosophy.md` for details):
 
-**元准则：中庸之道** — 过犹不及。控制一切行为的"度"。
+**Meta-Principle: 中庸之道 (The Doctrine of the Mean)** — 过犹不及 (Going too far is as bad as not going far enough). The "measure" that governs all behavior.
 
-**核心准则：**
-1. **格物致知** — 穷究事物本质，再论方案
-2. **知行合一** — 真知必行，不行非真知
-3. **辨证论治** — 先辨本质层次，再选策略
+**Core Principles:**
+1. **格物致知 (Investigate the Essence of Things)** — Understand the true nature before proposing solutions
+2. **知行合一 (Unity of Knowledge and Action)** — True knowledge demands action; inaction reveals ignorance
+3. **辨证论治 (Dialectical Diagnosis and Treatment)** — Determine the true level before choosing a strategy
 
-**协作准则：**
-4. **阴阳互生** — 各司其职，心怀全局
-5. **三省吾身** — 自省、互省、终省
+**Collaboration Principles:**
+4. **阴阳互生 (Yin-Yang Complementarity)** — Each fulfills their role while keeping the big picture in mind
+5. **三省吾身 (Reflect Upon Oneself)** — Self-reflection, peer reflection, final reflection
 
-### 与西方工程纪律的区别
+### Comparison with Western Engineering Discipline
 
-| 原版（外在约束） | BitFrog（内在驱动） |
-|----------------|-------------------|
-| Iron Laws — 绝对规则 | 知行合一 — 纪律来自理解 |
-| Hard Gates — 通过/不通过 | 中庸 — 恰当的度 |
-| Rationalization Blocking — 封堵借口 | 格物致知 — 理解到位，借口不会产生 |
-| Checklist inspection — 逐项打勾 | 三省吾身 — 反省思维过程 |
-| Optimal solution — 找最优解 | 中庸之道 — 找恰当解 |
+| Original (External Constraint) | BitFrog (Internal Drive) |
+|-------------------------------|--------------------------|
+| Iron Laws — absolute rules | 知行合一 (Unity of Knowledge and Action) — discipline from understanding |
+| Hard Gates — pass/fail | 中庸 (The Golden Mean) — the right measure |
+| Rationalization Blocking — blocking excuses | 格物致知 (Investigate the essence) — when understanding is deep, excuses do not arise |
+| Checklist inspection — checking boxes | 三省吾身 (Reflect upon oneself) — reflecting on the thinking process |
+| Optimal solution — finding the best answer | 中庸之道 (The Doctrine of the Mean) — finding the appropriate answer |
 
 ## Workflow
 
 ```
-brainstorm ──[进入计划]──▶ plan ──[开始执行]──▶ execute ──[代码审查]──▶ review
+brainstorm ──[Create Plan]──▶ plan ──[Start Execution]──▶ execute ──[Code Review]──▶ review
                                                     │
-                                              [遇到 bug]
+                                              [Hit a bug]
                                                     ▼
                                                   debug
 ```
 
-每个箭头是一个 **handoff 按钮**，点击即可流转，不点则留在当前对话。
+Each arrow is a **handoff button** — click to transition, or stay in the current conversation.
 
-**独立入口：** `debug` 和 `mentor` 可以随时直接使用。
+**Independent entry points:** `debug` and `mentor` can be used directly at any time.
 
 ## Language
 
-所有 agents 支持 **English** 和 **简体中文**，自动匹配用户语言。
+All agents support **English** and **简体中文**, automatically matching the user's language.
 
 ---
 
