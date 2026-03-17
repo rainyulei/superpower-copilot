@@ -1,0 +1,6 @@
+{
+  "name": "bitfrog-copilot",
+  "version": "4.0.0",
+  "description": "7+1 AI development agents with Chinese philosophy-driven thinking models",
+  "agents": ["agents/*.agent.md"]
+}

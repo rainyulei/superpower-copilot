@@ -1,6 +1,0 @@
-{
-  "name": "bitfrog-test",
-  "version": "0.0.1",
-  "description": "BitFrog API validation test plugin",
-  "agents": ["agents/*.agent.md"]
-}
