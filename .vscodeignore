@@ -7,12 +7,10 @@ node_modules/**
 tsconfig.json
 .gitignore
 docs/**
-.github/**
-eslint.config.mjs
-.vscode-test.js
+.github/workflows/**
+.github/plugin.json
 .claude/**
 .legion/**
-superpower-copilot/**
 CLAUDE.md
 package-lock.json
 *.vsix
