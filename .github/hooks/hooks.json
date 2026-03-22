@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": ".github/hooks/inject-philosophy.sh",
+        "timeout": 10
+      }
+    ],
+    "SubagentStart": [
+      {
+        "type": "command",
+        "command": ".github/hooks/inject-philosophy.sh",
+        "timeout": 10
+      }
+    ]
+  }
+}

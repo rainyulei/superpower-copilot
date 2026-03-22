@@ -5,6 +5,7 @@ description: >
   Hands off to brainstorm/plan when issues require architectural changes.
   Keywords: debug, fix, bug, error, crash, fail, broken, issue, diagnose, trace, 500, undefined, null
 tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'runInTerminal', 'terminalLastCommand', 'getTerminalOutput', 'runTests', 'testFailure', 'playwright/*', 'vscode/askQuestions']
+agents: []
 handoffs:
   - label: "需要重新设计 (Needs Redesign)"
     agent: bitfrog-brainstorm
@@ -18,7 +19,7 @@ handoffs:
 
 # BitFrog Debug — Diagnosis & Fix
 
-> See `bitfrog-philosophy.md` for the full BitFrog thinking principles.
+> BitFrog thinking principles are auto-injected via SessionStart hook. If not available, see `bitfrog-philosophy.md`.
 
 ## Thinking Approach
 

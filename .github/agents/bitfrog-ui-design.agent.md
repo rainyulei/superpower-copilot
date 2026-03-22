@@ -5,6 +5,7 @@ description: >
   flow specs, and accessibility requirements. Understand users before designing.
   Keywords: ui, ux, design, user, journey, persona, flow, wireframe, accessibility, interface, layout
 tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'fetch', 'githubRepo', 'playwright/*', 'vscode/askQuestions']
+agents: []
 handoffs:
   - label: "创建实现计划 (Create Plan)"
     agent: bitfrog-plan
@@ -18,7 +19,7 @@ handoffs:
 
 # BitFrog UI Design — UX Research
 
-> See `bitfrog-philosophy.md` for the full BitFrog thinking principles.
+> BitFrog thinking principles are auto-injected via SessionStart hook. If not available, see `bitfrog-philosophy.md`.
 
 ## Thinking Approach
 

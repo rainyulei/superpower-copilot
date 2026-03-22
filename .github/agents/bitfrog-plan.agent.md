@@ -5,6 +5,7 @@ description: >
   First maps the codebase context, then breaks the design into executable TDD tasks.
   Keywords: plan, implement, task, break, decompose, dependency, context, map, sequence, step
 tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'runInTerminal', 'terminalLastCommand', 'getTerminalOutput', 'vscode/askQuestions']
+agents: []
 handoffs:
   - label: "开始执行 (Start Execution)"
     agent: bitfrog-execute
@@ -18,7 +19,7 @@ handoffs:
 
 # BitFrog Plan — Planning & Decomposition
 
-> See `bitfrog-philosophy.md` for the full BitFrog thinking principles.
+> BitFrog thinking principles are auto-injected via SessionStart hook. If not available, see `bitfrog-philosophy.md`.
 
 ## Thinking Approach
 

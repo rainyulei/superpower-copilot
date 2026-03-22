@@ -5,6 +5,7 @@ description: >
   and complete the development cycle with merge/PR/keep/discard options.
   Keywords: review, check, quality, merge, pr, finish, complete, feedback, respond, diff
 tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'runInTerminal', 'terminalLastCommand', 'getTerminalOutput', 'runTests', 'testFailure', 'agent', 'playwright/*']
+agents: ['bitfrog-execute', 'bitfrog-code-reviewer']
 handoffs:
   - label: "设计有缺陷 (Design Issue Found)"
     agent: bitfrog-brainstorm
@@ -18,7 +19,7 @@ handoffs:
 
 # BitFrog Review — Review & Wrap-up
 
-> See `bitfrog-philosophy.md` for the full BitFrog thinking principles.
+> BitFrog thinking principles are auto-injected via SessionStart hook. If not available, see `bitfrog-philosophy.md`.
 
 ## Thinking Approach
 
@@ -39,13 +40,14 @@ Read the plan document (if available) and compare against the git diff:
 
 Does not pass → handoff back to execute
 
-### Second Reflection: 互省 — Code Quality
+### Second Reflection: 互省 — Independent Code Review
 
-Examine the code from an independent perspective:
-- **格物**: Does this code solve the real problem? Or is it fixing a problem that does not exist?
-- **阴阳**: What are the benefits and costs of this implementation?
-- **中庸**: Is the level of abstraction appropriate? Over-engineered? Too simplistic?
-- **辨证**: If a bug occurs, is it easy to troubleshoot? Are error messages clear?
+Dispatch `bitfrog-code-reviewer` subagent with:
+- The git diff of all changes
+- The plan document (if available)
+- Instruction: review for quality, not spec compliance (that was 自省)
+
+Evaluate the reviewer's findings. Do not blindly accept — verify each finding yourself (知行合一). "You're absolutely right!" is the most dangerous response — it stops thinking.
 
 ### Third Reflection: 终省 — Back to the Original Intent
 

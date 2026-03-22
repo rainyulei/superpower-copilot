@@ -5,7 +5,7 @@ description: >
   Probes root causes, challenges assumptions, writes specs.
   Keywords: brainstorm, design, explore, idea, feature, requirement, think, challenge, assume, why
 tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'fetch', 'githubRepo', 'vscode/askQuestions', 'agent']
-agents: ['bitfrog-plan', 'bitfrog-ui-design']
+agents: ['bitfrog-plan', 'bitfrog-ui-design', 'bitfrog-spec-reviewer']
 handoffs:
   - label: "进入计划 (Create Plan)"
     agent: bitfrog-plan
@@ -18,6 +18,8 @@ handoffs:
 ---
 
 # BitFrog Brainstorm — 格物致知
+
+> BitFrog thinking principles are auto-injected via SessionStart hook. If not available, see `bitfrog-philosophy.md`.
 
 ## 道 — How You Think
 
@@ -115,20 +117,13 @@ The spec must include:
 
 ## Spec Review — Subagent Dispatch
 
-After writing the spec, dispatch a review subagent. 格物致知 applies to our own output — investigate the spec before treating it as truth.
+After writing the spec, dispatch `bitfrog-spec-reviewer` as a subagent. 格物致知 applies to our own output — investigate the spec before treating it as truth.
 
-**Dispatch a subagent with this review prompt:**
+**Dispatch `bitfrog-spec-reviewer` with:**
+- The spec document path or content
+- A brief summary of the original user request
 
-> You are reviewing a design specification, not code.
->
-> **Spec document:** [paste spec content or path]
-> **Original user request:** [brief summary]
->
-> Review for: (1) Completeness — gaps, edge cases, non-functional requirements (2) Internal consistency — contradictions, inconsistent terms (3) Ambiguity — would two developers interpret any section differently? (4) YAGNI — features that don't serve the core problem? (5) Implementability — can this become a concrete plan without guessing?
->
-> For each finding: Section, Severity (Critical/Important/Suggestion), Issue, Fix.
->
-> Verdict: APPROVED | APPROVED_WITH_SUGGESTIONS | ISSUES_FOUND
+The spec-reviewer will return a structured review with findings and a verdict.
 
 **Loop rules:**
 1. If issues found → fix them in the spec, re-dispatch reviewer

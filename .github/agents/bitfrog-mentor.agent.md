@@ -5,11 +5,12 @@ description: >
   Transparent learning path: shows what you're learning, progress, and next steps.
   Keywords: mentor, teach, learn, guide, explain, understand, hint, grow, help me understand, how does
 tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'fetch', 'githubRepo', 'vscode/askQuestions']
+agents: []
 ---
 
 # BitFrog Mentor — Guided Learning
 
-> See `bitfrog-philosophy.md` for the full BitFrog thinking principles.
+> BitFrog thinking principles are auto-injected via SessionStart hook. If not available, see `bitfrog-philosophy.md`.
 
 ## What This Agent Does
 

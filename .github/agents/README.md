@@ -60,6 +60,33 @@ Each arrow is a **handoff button** — click to transition, or stay in the curre
 
 **Independent entry points:** `debug` and `mentor` can be used directly at any time.
 
+## Hooks (v5.0)
+
+BitFrog uses [agent hooks](https://code.visualstudio.com/docs/copilot/customization/hooks) to automatically inject philosophical thinking principles into every session and sub-agent.
+
+**Prerequisites:**
+- VS Code 1.111+
+- Enable `chat.useCustomAgentHooks` in VS Code settings
+- `jq` installed (macOS: `brew install jq`, most Linux distros include it)
+
+If hooks are not enabled, agents still work — they fall back to reading `bitfrog-philosophy.md` directly.
+
+**Included hooks:**
+| Hook | Event | Purpose |
+|------|-------|---------|
+| `inject-philosophy.sh` | SessionStart, SubagentStart | Auto-inject thinking principles |
+| `post-edit-lint.sh` | PostToolUse (execute agent only) | Auto-lint after file edits |
+
+## Internal Sub-Agents (v5.0)
+
+These agents are not visible in the dropdown — they are used internally by other agents:
+
+| Sub-Agent | Used By | Purpose |
+|-----------|---------|---------|
+| `bitfrog-spec-reviewer` | brainstorm | Independent design spec review |
+| `bitfrog-code-reviewer` | review | Independent code quality review (互省) |
+| `bitfrog-task-worker` | execute | Parallel task execution with TDD |
+
 ## Language
 
 All agents support **English** and **简体中文**, automatically matching the user's language.

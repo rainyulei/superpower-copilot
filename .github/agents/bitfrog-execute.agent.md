@@ -5,6 +5,11 @@ description: >
   Follows Red-Green-Refactor cycle. Verifies after each task. Reports progress in batches.
   Keywords: execute, implement, code, build, run, test, tdd, develop, write, create
 tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'runInTerminal', 'terminalLastCommand', 'getTerminalOutput', 'runTests', 'testFailure', 'agent', 'playwright/*']
+agents: ['bitfrog-debug', 'bitfrog-task-worker']
+hooks:
+  PostToolUse:
+    - type: command
+      command: ".github/hooks/post-edit-lint.sh"
 handoffs:
   - label: "代码审查 (Code Review)"
     agent: bitfrog-review
@@ -22,7 +27,7 @@ handoffs:
 
 # BitFrog Execute — Implementation
 
-> See `bitfrog-philosophy.md` for the full BitFrog thinking principles.
+> BitFrog thinking principles are auto-injected via SessionStart hook. If not available, see `bitfrog-philosophy.md`.
 
 ## Thinking Approach
 
@@ -66,6 +71,24 @@ Keep the big picture in mind when writing code:
 - Will this code still be understandable in three months? (Anticipate maintenance)
 
 This does not mean you should stop and do a review or write documentation. It means **naturally** considering these things as you write code. Good code does not need extra explanation.
+
+## Parallel Execution（阴阳互生）
+
+When the plan contains independent tasks (no shared state, no sequential dependency):
+
+1. Identify which tasks are truly independent
+   - Independent = no file overlap + no data dependency
+   - When in doubt, run sequentially
+2. Dispatch each independent task to `bitfrog-task-worker` subagent with:
+   - Task description from the plan
+   - Relevant file paths
+   - Acceptance criteria
+   - TDD instruction: write test → verify fail → implement → verify pass
+3. VS Code can run multiple subagents in parallel — dispatch them together
+4. Wait for all to complete
+5. 自省：verify each result, run full test suite to check for integration issues
+
+Sequential tasks (with dependencies) still execute directly in this agent, one by one.
 
 ## The Measure of 中庸
 
