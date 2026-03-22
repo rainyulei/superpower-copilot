@@ -13,6 +13,13 @@
         "command": ".github/hooks/inject-philosophy.sh",
         "timeout": 10
       }
+    ],
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": ".github/hooks/post-edit-lint.sh",
+        "timeout": 30
+      }
     ]
   }
 }

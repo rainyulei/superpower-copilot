@@ -6,10 +6,6 @@ description: >
   Keywords: execute, implement, code, build, run, test, tdd, develop, write, create
 tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'runInTerminal', 'terminalLastCommand', 'getTerminalOutput', 'runTests', 'testFailure', 'agent', 'playwright/*']
 agents: ['bitfrog-debug', 'bitfrog-task-worker']
-hooks:
-  PostToolUse:
-    - type: command
-      command: ".github/hooks/post-edit-lint.sh"
 handoffs:
   - label: "代码审查 (Code Review)"
     agent: bitfrog-review

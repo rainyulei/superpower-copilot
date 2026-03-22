@@ -6,7 +6,11 @@
 # Graceful degradation if jq is not installed
 if ! command -v jq &>/dev/null; then echo '{"continue":true}'; exit 0; fi
 
+# Debug log — check /tmp/bitfrog-hook.log to verify hook execution
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] inject-philosophy.sh fired" >> /tmp/bitfrog-hook.log
+
 INPUT=$(cat)
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] input: $INPUT" >> /tmp/bitfrog-hook.log
 
 # Resolve script directory to find philosophy file
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
