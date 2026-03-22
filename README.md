@@ -1,86 +1,92 @@
-# BitFrog Copilot
+# BitFrog Copilot 🐸
 
-[中文文档](readme-zh.md)
+> **Already have GitHub Copilot? Get Claude Code-level structured development experience — without switching editors.**
 
-**7+1 AI development agents for GitHub Copilot, powered by Chinese philosophy thinking models.**
+[中文文档](readme-zh.md) | [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=rainlei.bitfrog-copilot)
 
-BitFrog Copilot brings structured, disciplined AI development workflows to GitHub Copilot — not through rigid rules, but through deeply integrated philosophical thinking patterns that guide how each agent reasons, decides, and acts.
+<!-- TODO: Add GIF demo here
+![BitFrog Demo](docs/assets/demo.gif)
+-->
 
-## Why Philosophy Instead of Rules?
+## The Problem
 
-Most AI coding agents use **hard rules** to enforce discipline: iron laws, hard gates, rationalization blockers. This works — but we found it has limits.
+GitHub Copilot is great at code completion. But when you need it to **brainstorm → plan → execute → review** a feature end-to-end, it falls apart — no structure, no discipline, no workflow.
 
-When you force an LLM with "you MUST do X" and "you MUST NOT do Y", the model follows the letter but misses the spirit. It checks boxes without understanding why. The result looks correct but feels mechanical.
+Tools like Claude Code and Cursor solve this with agentic workflows. But you have to **leave your editor and your Copilot subscription behind**.
 
-**Chinese philosophy offers a different approach:** instead of constraining behavior from the outside, it shapes how the agent *thinks* from the inside. An agent that truly understands why tests matter will write them naturally — no iron law needed.
+## The Solution
 
-This project is deeply inspired by [Superpowers](https://github.com/obra/superpowers) by Jesse Vincent. We are grateful for its foundational concepts and workflow design. BitFrog builds on that foundation by replacing external constraints with philosophical thinking models — not because rules are wrong, but because we believe understanding runs deeper than compliance.
-
-## Install
-
-**Via VS Code Marketplace:**
-Search "BitFrog Copilot" in Extensions → Install
-
-**Via Agent Plugin:**
-Extensions sidebar → Agent Plugins → Search "bitfrog-copilot"
-
-## Agents
-
-| Agent | Role | Philosophy |
-|-------|------|-----------|
-| **@bitfrog** | Main router | Diagnose intent before routing |
-| **@bitfrog-brainstorm** | Explore & design | 格物致知 — understand the real problem before proposing solutions |
-| **@bitfrog-plan** | Map dependencies & decompose tasks | 格物 + 辨证 — scout the terrain, then plan |
-| **@bitfrog-execute** | TDD implementation | 知行合一 — if you know you should write tests, write them |
-| **@bitfrog-debug** | Diagnose & fix | 辨证论治 — diagnose the root level, then treat |
-| **@bitfrog-review** | Two-phase review & completion | 三省吾身 — self-reflect, peer-reflect, user-reflect |
-| **@bitfrog-mentor** | Guided learning | 格物致知 as a process — guide, don't tell |
-| **@bitfrog-ui-design** | UX research | Understand the user's real need before designing the interface |
-
-## Philosophy
-
-Five principles drive all BitFrog agents (see `bitfrog-philosophy.md`):
-
-**Meta-principle: 中庸之道** — Every action has a right measure. Too much is as bad as too little. This is not "find the middle ground" — it is the judgment to know what is *enough* in each specific situation.
-
-**Core:**
-1. **格物致知** — Investigate the true nature of things before acting. The user may not know what they really need.
-2. **知行合一** — Knowing and doing are inseparable. If you skip what you know you should do, you don't truly know it.
-3. **辨证论治** — The same symptom can have different root causes. Diagnose the level of the problem before choosing a fix.
-
-**Collaboration:**
-4. **阴阳互生** — Each agent does its own job while staying aware of the whole system.
-5. **三省吾身** — Quality comes from reflecting on your thinking process, not from checking boxes.
-
-### Why Not Just Use Rules?
-
-| Rules-based (external constraint) | Philosophy-based (internal drive) |
-|----------------------------------|----------------------------------|
-| "You MUST write tests" | Agent understands *why* tests matter → writes them naturally |
-| "You MUST NOT skip root cause analysis" | Agent understands that treating symptoms creates more problems |
-| Lists 11 excuses and blocks them | When understanding is deep, excuses don't arise |
-| Checklist: ✅ / ❌ | Reflection: "Is my thinking process right?" |
-| Finds the optimal solution | Finds the *appropriate* solution for this context |
-
-## Workflow
+BitFrog Copilot adds **7+1 specialized agents** directly inside GitHub Copilot Chat. Each agent handles one phase of development, and they hand off to each other automatically:
 
 ```
+@bitfrog (ask anything — auto-routes to the right agent)
+    ↓
 brainstorm → plan → execute → review
                        ↕
                      debug
 ```
 
-Each arrow is a **handoff button** — agents suggest the next step, you decide when to proceed.
+No new editor. No new subscription. Just install and go.
 
-`debug` and `mentor` work independently at any time.
+## What Makes It Different
+
+Most AI coding tools use **hard rules** to enforce discipline ("you MUST write tests", "you MUST NOT skip review"). BitFrog uses **Chinese philosophy thinking models** instead — the agents don't follow rules mechanically, they *understand why* the rules exist.
+
+| Rules-based approach | BitFrog's philosophy approach |
+|---------------------|-------------------------------|
+| "You MUST write tests" | Agent understands *why* tests matter → writes them naturally |
+| "You MUST NOT skip root cause analysis" | Agent knows treating symptoms creates more problems |
+| Checklist: ✅ / ❌ | Reflection: "Is my thinking process right?" |
+| Find the optimal solution | Find the *appropriate* solution for this context |
+
+The result: agents that make better judgment calls, not just follow instructions.
+
+## Install
+
+**VS Code Marketplace:**
+Search **"BitFrog Copilot"** in Extensions → Install
+
+**Agent Plugin (VS Code 1.110+):**
+`Cmd+Shift+P` → `Chat: Install Plugin` → `rainyulei/bitfrog-copilot`
+
+## Agents
+
+| Agent | What it does | When to use it |
+|-------|-------------|----------------|
+| **@bitfrog** | Auto-routes to the right agent | Don't know which agent? Start here |
+| **@bitfrog-brainstorm** | Explores ideas, challenges assumptions | "I want to build..." / "I have an idea..." |
+| **@bitfrog-plan** | Maps dependencies, decomposes tasks | Design is done, need an execution plan |
+| **@bitfrog-execute** | TDD implementation with verification | Plan is ready, time to code |
+| **@bitfrog-debug** | Diagnoses root cause, fixes, verifies | Something is broken |
+| **@bitfrog-review** | Two-phase review + merge/PR | Code is done, need quality check |
+| **@bitfrog-mentor** | Guided learning through hints | Want to understand, not just get answers |
+| **@bitfrog-ui-design** | UX research before UI implementation | Building user-facing features |
+
+## Philosophy
+
+Five principles from Chinese philosophy drive all BitFrog agents:
+
+| Principle | Meaning in BitFrog |
+|-----------|-------------------|
+| **中庸之道** | Every action has a right measure — too much is as bad as too little |
+| **格物致知** | Understand the true nature of the problem before proposing solutions |
+| **知行合一** | If you know you should do something, do it — skipping reveals you don't truly understand |
+| **辨证论治** | Same symptom, different root causes — diagnose the level before choosing a fix |
+| **阴阳互生 + 三省吾身** | Stay aware of the whole system; reflect on your thinking, not just the output |
+
+Read the full philosophy guide: [bitfrog-philosophy.md](.github/agents/bitfrog-philosophy.md)
 
 ## Language
 
 All agents support **English** and **简体中文** automatically.
 
+## Star This Repo ⭐
+
+If BitFrog Copilot helps your workflow, **please give it a star** — it helps other developers discover it.
+
 ## Acknowledgments
 
-BitFrog Copilot is inspired by [Superpowers](https://github.com/obra/superpowers) by Jesse Vincent. The workflow structure, skill-based architecture, and many foundational concepts originate from that project. We are grateful for the open-source foundation it provides.
+Inspired by [Superpowers](https://github.com/obra/superpowers) by Jesse Vincent. BitFrog builds on that foundation by replacing external rule constraints with internal philosophical thinking models.
 
 ## License
 
