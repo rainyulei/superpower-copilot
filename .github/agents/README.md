@@ -19,7 +19,7 @@ BitFrog agents are automatically discovered by VS Code (`.github/agents/` direct
 | **@bitfrog-debug** | Diagnosis & Fix | 辨证论治 — determine the true level before choosing a strategy |
 | **@bitfrog-review** | Review & Wrap-up | 三省吾身 — self-reflection, peer reflection, final reflection |
 | **@bitfrog-mentor** | Guided Learning | 格物致知 — the process itself |
-| **@bitfrog-ui-design** | UX Research | 格物致知 applied to people — first understand the 神 (spirit/need), then shape the 形 (form) |
+| **@bitfrog-mozi** | Autonomous Deep Worker | 兼爱非攻 — the craftsman who sees the whole and acts on it |
 
 ## Philosophy
 

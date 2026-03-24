@@ -28,6 +28,8 @@ BitFrog adds **7+1 specialized agents** directly inside Copilot Chat. Each handl
 brainstorm → plan → execute → review
                        ↕
                      debug
+
+mozi (autonomous — give a goal, it does everything)
 ```
 
 No new editor. No new subscription. Just install and go.
@@ -67,11 +69,11 @@ Different agents need different levels of autonomy:
 | **@bitfrog-debug** | Bypass Approvals | Needs to read logs, edit code, run tests freely |
 | **@bitfrog-review** | Default | Reviews code, suggests changes — you decide what to apply |
 | **@bitfrog-mentor** | Default | Read-only guidance |
-| **@bitfrog-ui-design** | Default | Research and document — no code changes |
+| **@bitfrog-mozi** | Bypass Approvals | Autonomous end-to-end execution — needs full tool access without interruption |
 
 **How to set:** Click the permission level indicator in the Chat view (VS Code 1.111+).
 
-**Rule of thumb:** Use **Default** when thinking (brainstorm, plan, review). Use **Bypass** when doing (execute, debug).
+**Rule of thumb:** Use **Default** when thinking (brainstorm, plan, review). Use **Bypass** when doing (execute, debug, mozi).
 
 ### 4. Start Using
 
@@ -82,6 +84,7 @@ Open Copilot Chat, select **@bitfrog**, and describe what you want to do:
 - "Execute the plan above" → routes to **execute**
 - "This API returns 500" → routes to **debug**
 - "Review the changes" → routes to **review**
+- "Just do it — add dark mode support" → routes to **mozi**
 
 Or select a specific agent directly from the dropdown.
 
@@ -98,7 +101,7 @@ Or select a specific agent directly from the dropdown.
 | **@bitfrog-debug** | Four-diagnostic-method root cause analysis | Something is broken | Bypass |
 | **@bitfrog-review** | Three-reflection review (spec → code quality → user intent) | Code is done, need quality check | Default |
 | **@bitfrog-mentor** | Guided learning through hints, never gives direct answers | Want to understand, not just get answers | Default |
-| **@bitfrog-ui-design** | Jobs-to-be-Done analysis, user journey, flow specs | Building user-facing features | Default |
+| **@bitfrog-mozi** | Autonomous deep worker — investigates, plans, executes, and self-verifies until goal is achieved | "Just do it" — give a focused goal, get it done end-to-end | Bypass |
 
 ### Internal Sub-Agents (v4.2)
 
@@ -134,6 +137,29 @@ Five principles drive all agents:
 | **阴阳互生 + 三省吾身** (Awareness + Reflection) | Stay aware of the whole system; reflect on your thinking, not just the output |
 
 Read the full guide: [bitfrog-philosophy.md](.github/agents/bitfrog-philosophy.md)
+
+## What's New in v4.3
+
+### Removed: `@bitfrog-ui-design`
+
+There are excellent dedicated design skills available (e.g. [Impeccable](https://impeccable.style)) that can be installed alongside BitFrog and used directly within your workflow. Rather than building a mediocre built-in design agent, we recommend pairing BitFrog with a specialized design skill of your choice.
+
+### Added: `@bitfrog-mozi` — Autonomous Deep Worker
+
+Named after the Chinese philosopher 墨子 (Mozi), who believed in hands-on craftsmanship and end-to-end ownership.
+
+Give Mozi a focused goal — it investigates the codebase, aligns with you on the approach, then autonomously executes, self-verifies, and iterates until the goal is achieved. No handoffs, no waiting between phases.
+
+**When to use Mozi vs the standard workflow:**
+
+| Scenario | Use |
+|----------|-----|
+| Exploring a new idea, unsure of direction | brainstorm → plan → execute → review |
+| Clear, focused goal you want done end-to-end | **@bitfrog-mozi** |
+| Complex multi-subsystem project | brainstorm → plan → execute → review |
+| "Just add dark mode to the settings page" | **@bitfrog-mozi** |
+
+**Recommended mode:** Bypass Approvals — Mozi needs full tool access to work autonomously without interruption.
 
 ## Language
 

@@ -31,9 +31,9 @@ handoffs:
     agent: bitfrog-mentor
     prompt: "Help me learn and understand this based on the context above."
     send: false
-  - label: "UX 研究 (UI Design)"
-    agent: bitfrog-ui-design
-    prompt: "Help me research and design the user experience for this feature."
+  - label: "全自动 (Mozi Autonomous)"
+    agent: bitfrog-mozi
+    prompt: "Autonomously investigate, plan, execute, and verify this goal."
     send: false
 ---
 
@@ -73,9 +73,9 @@ Signals: references a design doc, "break down tasks", "write a plan"
 Signals: references an implementation plan, "start executing", "implement according to plan"
 → **执行开发 (Execute)**
 
-### 6. Involves UI/UX design?
-Signals: "interface", "user experience", "interaction design", "wireframe"
-→ **UX 研究 (UI Design)**
+### 6. Wants autonomous end-to-end completion?
+Signals: "just do it", "do it all", "autonomous", "full auto", clear focused goal with no existing design/plan
+→ **全自动 (Mozi Autonomous)**
 
 ### 7. Everything else (default)
 New ideas, new features, "I want to...", "help me...", any request without an existing design

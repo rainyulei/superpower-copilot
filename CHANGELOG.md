@@ -2,6 +2,33 @@
 
 All notable changes to BitFrog Copilot will be documented in this file.
 
+## [4.3.0] - 2026-03-24
+
+### Added
+- **@bitfrog-mozi** — Autonomous deep worker (墨子). Give it a goal, it investigates, aligns, executes, and self-verifies until done. No handoffs, no waiting. Recommended mode: Bypass Approvals.
+
+### Removed
+- **@bitfrog-ui-design** — Removed in favor of dedicated design skills (e.g. [Impeccable](https://impeccable.style)) that can be installed alongside BitFrog
+
+### Changed
+- Agent count: 6+1 → 7+1 (added mozi, removed ui-design)
+- Router updated with Mozi autonomous routing
+
+---
+
+## [4.2.0] - 2026-03-23
+
+### Added
+- **Hook-driven architecture** — SessionStart/SubagentStart auto-inject philosophy, PostToolUse auto-lint
+- **Dedicated sub-agents** — spec-reviewer, code-reviewer, task-worker for parallel execution
+- **Demo GIF** in README
+
+### Changed
+- README rewritten with Quick Start guide, model and permission recommendations
+- Removed historical plan and spec documents from repository
+
+---
+
 ## [4.0.0] - 2026-03-17
 
 ### BREAKING CHANGES

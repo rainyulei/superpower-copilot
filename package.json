@@ -1,8 +1,8 @@
 {
   "name": "bitfrog-copilot",
   "displayName": "BitFrog Copilot",
-  "description": "7+1 AI development agents for GitHub Copilot with Chinese philosophy-driven thinking models. Brainstorm, plan, execute, debug, review, mentor, and UI design.",
-  "version": "4.0.0",
+  "description": "7+1 AI development agents for GitHub Copilot with Chinese philosophy-driven thinking models. Brainstorm, plan, execute, debug, review, mentor, and Mozi autonomous deep worker.",
+  "version": "4.3.0",
   "publisher": "rainlei",
   "license": "MIT",
   "repository": {

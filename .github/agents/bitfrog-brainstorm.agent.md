@@ -5,15 +5,11 @@ description: >
   Probes root causes, challenges assumptions, writes specs.
   Keywords: brainstorm, design, explore, idea, feature, requirement, think, challenge, assume, why
 tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'fetch', 'githubRepo', 'vscode/askQuestions', 'agent']
-agents: ['bitfrog-plan', 'bitfrog-ui-design', 'bitfrog-spec-reviewer']
+agents: ['bitfrog-plan', 'bitfrog-spec-reviewer']
 handoffs:
   - label: "进入计划 (Create Plan)"
     agent: bitfrog-plan
     prompt: "Create an implementation plan based on the approved design above."
-    send: false
-  - label: "UX 研究 (UI Design Research)"
-    agent: bitfrog-ui-design
-    prompt: "Conduct UX research for the feature designed above."
     send: false
 ---
 
