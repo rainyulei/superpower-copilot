@@ -5,7 +5,7 @@ All notable changes to BitFrog Copilot will be documented in this file.
 ## [4.3.0] - 2026-03-24
 
 ### Added
-- **@bitfrog-mozi** — Autonomous deep worker (墨子). Give it a goal, it investigates, aligns, executes, and self-verifies until done. No handoffs, no waiting. Recommended mode: Bypass Approvals.
+- **@bitfrog-mozi** [BETA] — Autonomous deep worker (墨子). Give it a goal, it investigates, aligns, executes, and self-verifies until done. No handoffs, no waiting. Recommended mode: Bypass Approvals.
 
 ### Removed
 - **@bitfrog-ui-design** — Removed in favor of dedicated design skills (e.g. [Impeccable](https://impeccable.style)) that can be installed alongside BitFrog

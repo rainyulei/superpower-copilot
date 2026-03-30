@@ -101,7 +101,7 @@ Or select a specific agent directly from the dropdown.
 | **@bitfrog-debug** | Four-diagnostic-method root cause analysis | Something is broken | Bypass |
 | **@bitfrog-review** | Three-reflection review (spec → code quality → user intent) | Code is done, need quality check | Default |
 | **@bitfrog-mentor** | Guided learning through hints, never gives direct answers | Want to understand, not just get answers | Default |
-| **@bitfrog-mozi** | Autonomous deep worker — investigates, plans, executes, and self-verifies until goal is achieved | "Just do it" — give a focused goal, get it done end-to-end | Bypass |
+| **@bitfrog-mozi** | [BETA] Autonomous deep worker — investigates, plans, executes, and self-verifies until goal is achieved | "Just do it" — give a focused goal, get it done end-to-end | Bypass |
 
 ### Internal Sub-Agents (v4.2)
 
@@ -144,7 +144,7 @@ Read the full guide: [bitfrog-philosophy.md](.github/agents/bitfrog-philosophy.m
 
 There are excellent dedicated design skills available (e.g. [Impeccable](https://impeccable.style)) that can be installed alongside BitFrog and used directly within your workflow. Rather than building a mediocre built-in design agent, we recommend pairing BitFrog with a specialized design skill of your choice.
 
-### Added: `@bitfrog-mozi` — Autonomous Deep Worker
+### Added: `@bitfrog-mozi` — Autonomous Deep Worker (BETA)
 
 Named after the Chinese philosopher 墨子 (Mozi), who believed in hands-on craftsmanship and end-to-end ownership.
 

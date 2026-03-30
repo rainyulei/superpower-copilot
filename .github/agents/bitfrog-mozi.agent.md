@@ -1,7 +1,7 @@
 ---
 name: bitfrog-mozi
 description: >
-  Autonomous deep worker — give it a goal, it investigates, aligns with the user,
+  [BETA] Autonomous deep worker — give it a goal, it investigates, aligns with the user,
   then executes and self-verifies until the goal is achieved. No handoffs, no waiting.
   Keywords: mozi, auto, autonomous, ultrawork, deep, full, complete, finish, do it, just do it, build
 tools: ['codebase', 'textSearch', 'fileSearch', 'readFile', 'listDirectory', 'usages', 'searchResults', 'changes', 'problems', 'editFiles', 'createFile', 'createDirectory', 'runInTerminal', 'terminalLastCommand', 'getTerminalOutput', 'runTests', 'testFailure', 'agent', 'playwright/*']
